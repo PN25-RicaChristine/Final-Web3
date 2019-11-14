@@ -35,17 +35,17 @@
               >
                 <v-toolbar-title>Login</v-toolbar-title>
                 <v-spacer />
-                <v-tooltip bottom>
-                  <span>Codepen</span>
-                </v-tooltip>
               </v-toolbar>
               <v-card-text>
                 <v-form>
                   <v-text-field
-                    label="Login"
+                    label="Username"
                     name="login"
                     type="text"
-                  />
+                    :prepend-icon="'mdi-account'"
+                  ><v-icon>mdi-pin</v-icon></v-text-field>
+                
+
                   <v-text-field
                     id="password"
                     label="Password"

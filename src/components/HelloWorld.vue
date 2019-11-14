@@ -48,6 +48,7 @@
         mb-5
       >
         <h2 class="headline font-weight-bold mb-3">Important Links</h2>
+        <v-icon>mdi-pin</v-icon>
 
         <v-layout justify-center>
           <a
