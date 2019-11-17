@@ -26,7 +26,7 @@
         <v-btn id="submit" class="primary justify-center" @click="submit()">Login</v-btn>
         <br>
         <br>
-        <v-text>"Forgot password?"</v-text>
+        <v-text href="#">"Forgot password?"</v-text>
         <v-card-text>"Don't have account yet? Sign in here!"</v-card-text>
         <br>
       </center>
