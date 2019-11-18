@@ -43,7 +43,7 @@
         :prepend-icon="'mdi-key-variant'"
       ></v-text-field>
       <v-text-field
-        v-model="credentials.conpasswrd"
+        v-model="credentials.conpassword"
         :rules="[rules.required]"
         label="Confirm Password"
         required
@@ -53,26 +53,28 @@
         :prepend-icon="'mdi-key-variant'"
       ></v-text-field>
       <center>
-        <v-btn id="submit" class="primary justify-center" @click="submit()">Login</v-btn>
+        <v-btn id="submit" class="primary justify-center" @click="submit">Login</v-btn>
         <v-card-text>"Already have an account? Sign in!"</v-card-text>
       </center>
     </v-form>
   </v-card>
 </template>
 <script>
+import AUTH from "@/auth";
 export default {
-  data: () => {
+  data() {
     return {
+      auth: AUTH,
       credentials: {
         name: "",
         uname: "",
         adds: "",
         email: "",
         password: "",
-        conpasswrd: ""
+        conpassword: ""
       },
-      show:false,
-      show1:false,
+      show: false,
+      show1: false,
       checkbox: false,
       rules: {
         required: value => !!value || "Required.",
@@ -80,13 +82,27 @@ export default {
       }
     };
   },
-
   methods: {
-    submit() {
-      if (this.$refs.form.validate()) {
-        alert("valid");
-      }
-    },
+    submit: function(e) {
+      e.preventDefault();
+
+      alert("valid");
+      AUTH.register(
+        this.credentials.name,
+        this.credentials.uname,
+        this.credentials.adds,
+        this.credentials.email,
+        this.credentials.password,
+        this.credentials.conpassword
+      );
+      sessionStorage.setItem("Name", this.credentials.name),
+        sessionStorage.setItem("Username", this.credentials.uname),
+        sessionStorage.setItem("Address", this.credentials.adds),
+        sessionStorage.setItem("Email", this.credentials.email),
+        sessionStorage.setItem("Password", this.credentials.password),
+        sessionStorage.setItem("Con Password", this.credentials.conpassword);
+      this.$router.push("/login");
+    }
   }
 };
 </script>

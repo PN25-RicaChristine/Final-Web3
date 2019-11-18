@@ -41,8 +41,7 @@
           </v-navigation-drawer>
         </v-col>
         <v-col cols="8">
-            <v-text-field id="search" :prepend-icon="'mdi-magnify'"></v-text-field>
-            <v-btn> Search</v-btn>
+
         </v-col>
       </v-row>
     </v-row>
@@ -56,6 +55,14 @@ export default {
         { title: "Home", icon: "dashboard" },
         { title: "My Account", icon: "account_circle" },
         { title: "Posts", icon: "library_books" }
+      ],
+      items1: [
+        { title: "Hotels" },
+        { title: "Beaches" },
+        { title: "Mountains" },
+        { title: "Water Falls" },
+        { title: "Historical" },
+        { title: "Museums" }
       ]
     };
   }
@@ -72,7 +79,10 @@ export default {
 #sidebar {
   padding-top: 0px;
 }
-#search{
+#search {
   width: 50px;
+}
+#category {
+  float: center;
 }
 </style>

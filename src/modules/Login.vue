@@ -23,7 +23,7 @@
       ></v-text-field>
       <br>
       <center>
-        <v-btn id="submit" class="primary justify-center" @click="submit()">Login</v-btn>
+        <v-btn id="submit" class="primary justify-center" @click="submit">Login</v-btn>
         <br>
         <br>
         <v-text href="#">"Forgot password?"</v-text>
@@ -34,16 +34,14 @@
   </v-card>
 </template>
 <script>
+import AUTH from "@/auth";
 export default {
   data: () => {
+    AUTH;
     return {
       credentials: {
-        name: "",
         uname: "",
-        adds: "",
-        email: "",
-        password: "",
-        conpasswrd: ""
+        password: ""
       },
       show: false,
       checkbox: false,
@@ -55,11 +53,16 @@ export default {
   },
 
   methods: {
-    submit() {
-      if (this.$refs.form.validate()) {
-        this.$router.push('/dashboard');
-        alert("valid");
-      }
+    submit: function(e) {
+      e.preventDefault();
+      let user = AUTH.login(this.credentials.uname, this.credentials.password);
+      AUTH.setUser(user);
+      alert("TestUlit!")
+      this.$router.push("/dashboard");
+      // if (this.$refs.form.validate()) {
+      //   this.$router.push("/dashboard");
+      //   alert("valid");
+      // }
     }
   }
 };
