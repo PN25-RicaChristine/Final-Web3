@@ -3,6 +3,9 @@
     <center>
       <v-card-title color="primary" class="text-center" id="title">Login</v-card-title>
     </center>
+    <center>
+    <v-icon id="user" large>mdi-account</v-icon>
+    </center>
     <v-form ref="form" id="form">
       <v-text-field
         v-model="credentials.uname"
@@ -23,10 +26,10 @@
       ></v-text-field>
       <br>
       <center>
-        <v-btn id="submit" class="primary justify-center" @click="submit()">Login</v-btn>
+        <v-btn id="submit" class="primary justify-center" @click="submit">Login</v-btn>
         <br>
         <br>
-        <v-text>"Forgot password?"</v-text>
+        <v-text href="#">"Forgot password?"</v-text>
         <v-card-text>"Don't have account yet? Sign in here!"</v-card-text>
         <br>
       </center>
@@ -34,16 +37,14 @@
   </v-card>
 </template>
 <script>
+import AUTH from "@/auth";
 export default {
   data: () => {
+    AUTH;
     return {
       credentials: {
-        name: "",
         uname: "",
-        adds: "",
-        email: "",
-        password: "",
-        conpasswrd: ""
+        password: ""
       },
       show: false,
       checkbox: false,
@@ -55,11 +56,16 @@ export default {
   },
 
   methods: {
-    submit() {
-      if (this.$refs.form.validate()) {
-        this.$router.push('/dashboard');
-        alert("valid");
-      }
+    submit: function(e) {
+      e.preventDefault();
+      let user = AUTH.login(this.credentials.uname, this.credentials.password);
+      AUTH.setUser(user);
+      alert("TestUlit!")
+      this.$router.push("/dashboard");
+      // if (this.$refs.form.validate()) {
+      //   this.$router.push("/dashboard");
+      //   alert("valid");
+      // }
     }
   }
 };
@@ -81,5 +87,8 @@ export default {
 }
 #submit {
   float: center;
+}
+#user{
+  margin-top: 15px;
 }
 </style>

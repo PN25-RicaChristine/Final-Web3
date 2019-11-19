@@ -29,6 +29,7 @@
         v-model="credentials.email"
         :rules="[rules.required]"
         label="E-mail"
+        type="email"
         required
         :prepend-icon="'mdi-mail'"
       ></v-text-field>
@@ -43,7 +44,7 @@
         :prepend-icon="'mdi-key-variant'"
       ></v-text-field>
       <v-text-field
-        v-model="credentials.conpasswrd"
+        v-model="credentials.conpassword"
         :rules="[rules.required]"
         label="Confirm Password"
         required
@@ -53,40 +54,74 @@
         :prepend-icon="'mdi-key-variant'"
       ></v-text-field>
       <center>
-        <v-btn id="submit" class="primary justify-center" @click="submit()">Login</v-btn>
+        <v-col cols="12" md="16">
+          <v-overflow-btn id="category" class="my-2" color="red" :items="items" label="User Type"></v-overflow-btn>
+        </v-col>
+        <v-btn id="submit" class="primary justify-center" @click="submit">Login</v-btn>
         <v-card-text>"Already have an account? Sign in!"</v-card-text>
       </center>
     </v-form>
   </v-card>
 </template>
 <script>
+import AUTH from "@/auth";
+import jquery from "jquery";
 export default {
-  data: () => {
+  data() {
     return {
+      items: [{ text: "User" }, { text: "Blogger" }],
+      auth: AUTH,
       credentials: {
         name: "",
         uname: "",
         adds: "",
         email: "",
         password: "",
-        conpasswrd: ""
+        conpassword: ""
       },
-      show:false,
-      show1:false,
-      checkbox: false,
+      show: false,
+      show1: false,
       rules: {
         required: value => !!value || "Required.",
         min: v => v.length >= 8 || "Min 8 characters"
       }
     };
   },
-
   methods: {
-    submit() {
-      if (this.$refs.form.validate()) {
-        alert("valid");
-      }
-    },
+    submit: function(e) {
+      e.preventDefault();
+
+      alert("valid");
+      AUTH.register(
+        this.credentials.name,
+        this.credentials.uname,
+        this.credentials.adds,
+        this.credentials.email,
+        this.credentials.password,
+        this.credentials.conpassword
+      );
+
+      //for database express
+      let link = `http://localhost:3231/accounts/${this.credentials.name}/${this.credentials.uname}/${this.credentials.adds}/${this.credentials.email}/${this.credentials.password}/blogger`;
+      jquery
+        .ajax({
+          url: link,
+          method: "POST",
+          headers: {
+            "Access-Control-Allow-Origin": "*"
+          }
+        });
+      //end db
+      this.swal.fire("You are now registered!","Nice one!","success")
+      sessionStorage.setItem("Name", this.credentials.name),
+        sessionStorage.setItem("Username", this.credentials.uname),
+        sessionStorage.setItem("Address", this.credentials.adds),
+        sessionStorage.setItem("Email", this.credentials.email),
+        sessionStorage.setItem("Password", this.credentials.password),
+        sessionStorage.setItem("Con Password", this.credentials.conpassword);
+      sessionStorage.setItem("User type", this.items.label);
+      this.$router.push("/login");
+    }
   }
 };
 </script>
