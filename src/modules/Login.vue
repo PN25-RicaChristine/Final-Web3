@@ -73,7 +73,9 @@ export default {
 
 <style scoped>
 #card {
-  margin-top: 30px;
+  position: absolute;
+  top: 100px;
+  right: 100px;
 }
 #title {
   text-align: center;
