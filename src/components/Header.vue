@@ -6,7 +6,7 @@
         
         <v-row>
           <v-col md="10">
-            <v-text-field id="search" label="Search" :append-icon="'mdi-magnify'" single-line></v-text-field>
+            <v-text-field id="search" label="Search" :append-icon="'mdi-magnify'" single-line v-show="$route.path === '/dashboard' ? true : false"></v-text-field>
           </v-col>
         </v-row>
 
@@ -55,6 +55,6 @@ export default {
   margin-top: 20px;
 }
 #head{
-  padding-top: 3px;
+  padding-top: 8px;
 }
 </style>

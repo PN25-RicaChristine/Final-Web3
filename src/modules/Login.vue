@@ -3,6 +3,9 @@
     <center>
       <v-card-title color="primary" class="text-center" id="title">Login</v-card-title>
     </center>
+    <center>
+    <v-icon id="user" large>mdi-account</v-icon>
+    </center>
     <v-form ref="form" id="form">
       <v-text-field
         v-model="credentials.uname"
@@ -82,5 +85,8 @@ export default {
 }
 #submit {
   float: center;
+}
+#user{
+  margin-top: 15px;
 }
 </style>

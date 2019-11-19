@@ -29,6 +29,7 @@
         v-model="credentials.email"
         :rules="[rules.required]"
         label="E-mail"
+        type="email"
         required
         :prepend-icon="'mdi-mail'"
       ></v-text-field>
@@ -67,7 +68,7 @@ import AUTH from "@/auth";
 export default {
   data() {
     return {
-      items: [{ text: "User" }, { text: "Vlogger" }],
+      items: [{ text: "User" }, { text: "Blogger" }],
       auth: AUTH,
       credentials: {
         name: "",
@@ -79,7 +80,6 @@ export default {
       },
       show: false,
       show1: false,
-      checkbox: false,
       rules: {
         required: value => !!value || "Required.",
         min: v => v.length >= 8 || "Min 8 characters"
