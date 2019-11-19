@@ -1,4 +1,5 @@
 <template>
+<v-img class="white--text align-end" height="100px" src="https://www.circleofdocs.com/wp-content/uploads/2018/03/girl-on-top-of-mountain.jpg">
   <v-card id="card" class="mx-auto" width="500" outlined>
     <center>
       <v-card-title color="primary" class="text-center" id="title">Login</v-card-title>
@@ -35,6 +36,7 @@
       </center>
     </v-form>
   </v-card>
+</v-img>
 </template>
 <script>
 import AUTH from "@/auth";
@@ -74,8 +76,8 @@ export default {
 <style scoped>
 #card {
   position: absolute;
-  top: 100px;
-  right: 100px;
+  top: 10%;
+  right: 10%;
 }
 #title {
   text-align: center;
