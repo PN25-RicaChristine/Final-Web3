@@ -36,15 +36,12 @@
       </v-navigation-drawer>
     </v-col>
     <v-col cols="8">
-      <template>
         <v-card class="mx-auto" max-width="900">
           <v-card-title color="info" class="text-center" id="title">Create Post</v-card-title>
-          <center>
-            <div id="desbody">
-              <v-text-field label="Description..." outlined></v-text-field>
-            </div>
+          <center id="input">
+            <v-text-field v-model="description.input" id="desbody" label="Description..." outlined></v-text-field>
           </center>
-          <v-card-actions>
+          <v-card-actions id="actions">
             <v-file-input
               v-model="files"
               color="deep-purple accent-4"
@@ -58,7 +55,6 @@
             <v-btn color="info">Post</v-btn>
           </v-card-actions>
         </v-card>
-      </template>
     </v-col>
   </v-row>
 </template>
@@ -71,7 +67,11 @@ export default {
         { title: "My Account", icon: "account_circle" },
         { title: "Posts", icon: "library_books" }
       ],
-      files: []
+      files: [],
+
+      description: {
+        input: ""
+      }
     };
   }
 };
@@ -88,17 +88,24 @@ export default {
   width: 50px;
 }
 #desbody {
-  width: 850px;
-  margin-top: 20px;
+  width: 3%;
+  margin-top: 20%;
 }
 #textfield {
   height: 500px;
 }
 #title {
   background-color: lightgray;
+  padding:1%;
+  margin-bottom: 2%;
+}
+#actions{
+  margin-top: 0%;
+}
+#input{
+  width:95%;
+  height:50%;
+  margin-left: 2%;
 }
 
-/* #category {
-  float: center;
-} */
 </style>
