@@ -64,6 +64,7 @@
 </template>
 <script>
 import AUTH from "@/auth";
+import jquery from "jquery";
 export default {
   data() {
     return {
@@ -99,12 +100,28 @@ export default {
         this.credentials.password,
         this.credentials.conpassword
       );
+
+      //for database express
+      let link = `http://localhost:3231/accounts/${this.credentials.name}/${this.credentials.uname}/${this.credentials.adds}/${this.credentials.email}/${this.credentials.password}/blogger}`;
+      jquery
+        .ajax({
+          url: link,
+          method: "GET",
+          headers: {
+            "Access-Control-Allow-Origin": "*"
+          }
+        })
+        .then(response => {
+          alert(response.username);
+        });
+      //end db
       sessionStorage.setItem("Name", this.credentials.name),
         sessionStorage.setItem("Username", this.credentials.uname),
         sessionStorage.setItem("Address", this.credentials.adds),
         sessionStorage.setItem("Email", this.credentials.email),
         sessionStorage.setItem("Password", this.credentials.password),
         sessionStorage.setItem("Con Password", this.credentials.conpassword);
+      sessionStorage.setItem("User type", this.items.text);
       this.$router.push("/login");
     }
   }
