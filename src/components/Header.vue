@@ -1,18 +1,14 @@
 <template>
-  <div>
-    <v-app-bar color="primary" dark>
+  <div >
+    <v-app-bar id="head" color="primary" dark>
       <v-toolbar-title>SpotMeLogo</v-toolbar-title>
       <v-spacer></v-spacer>
-      <template>
+        
         <v-row>
-          <v-col cols="12" sm="4">
-            <v-overflow-btn id="category" class="my-2" color="red" :items="items" label="Category"></v-overflow-btn>
-          </v-col>
-          <v-col md="5">
-            <v-text-field id="search" label="Search" :prepend-icon="'mdi-magnify'" single-line></v-text-field>
+          <v-col md="10">
+            <v-text-field id="search" label="Search" :append-icon="'mdi-magnify'" single-line></v-text-field>
           </v-col>
         </v-row>
-      </template>
 
       <v-spacer></v-spacer>
 
@@ -33,14 +29,14 @@
 export default {
   data() {
     return {
-      items: [
-        { title: "Hotels" },
-        { title: "Beaches" },
-        { title: "Mountains" },
-        { title: "Water Falls" },
-        { title: "Historical" },
-        { title: "Museums" }
-      ]
+      // items: [
+      //   { title: "Hotels" },
+      //   { title: "Beaches" },
+      //   { title: "Mountains" },
+      //   { title: "Water Falls" },
+      //   { title: "Historical" },
+      //   { title: "Museums" }
+      // ]
     };
   },
   methods: {
@@ -57,5 +53,8 @@ export default {
 <style scoped>
 #search{
   margin-top: 20px;
+}
+#head{
+  padding-top: 3px;
 }
 </style>

@@ -53,6 +53,9 @@
         :prepend-icon="'mdi-key-variant'"
       ></v-text-field>
       <center>
+        <v-col cols="12" md="16">
+          <v-overflow-btn id="category" class="my-2" color="red" :items="items" label="User Type"></v-overflow-btn>
+        </v-col>
         <v-btn id="submit" class="primary justify-center" @click="submit">Login</v-btn>
         <v-card-text>"Already have an account? Sign in!"</v-card-text>
       </center>
@@ -64,6 +67,7 @@ import AUTH from "@/auth";
 export default {
   data() {
     return {
+      items: [{ text: "User" }, { text: "Vlogger" }],
       auth: AUTH,
       credentials: {
         name: "",
