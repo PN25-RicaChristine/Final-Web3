@@ -1,42 +1,40 @@
 <template>
-<v-img class="white--text align-end" height="100px" src="https://www.circleofdocs.com/wp-content/uploads/2018/03/girl-on-top-of-mountain.jpg">
-  <v-card id="card" class="mx-auto" width="500" outlined>
-    <center>
-      <v-card-title color="primary" class="text-center" id="title">Login</v-card-title>
-    </center>
-    <center>
-    <v-icon id="user" large>mdi-account</v-icon>
-    </center>
-    <v-form ref="form" id="form">
-      <v-text-field
-        v-model="credentials.uname"
-        :rules="[rules.required]"
-        label="Username"
-        required
-        :prepend-icon="'mdi-account'"
-      ></v-text-field>
-      <v-text-field
-        v-model="credentials.password"
-        :rules="[rules.required]"
-        label="Password"
-        required
-        :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-        @click:append="show = !show"
-        :type="show ? 'text' : 'password'"
-        :prepend-icon="'mdi-key-variant'"
-      ></v-text-field>
-      <br>
-      <center>
-        <v-btn id="submit" class="primary justify-center" @click="submit">Login</v-btn>
-        <br>
-        <br>
-        <v-text href="#">"Forgot password?"</v-text>
-        <v-card-text>"Don't have account yet? Sign in here!"</v-card-text>
-        <br>
-      </center>
-    </v-form>
-  </v-card>
-</v-img>
+  <v-img class="white--text align-end" height="100px" src="@/assets/back1.jpg">
+    <v-card id="card" class="mx-auto" max-width="500">
+      <div id="title">
+        <v-avatar id="circle" size="150">
+          <v-icon dark size="600%">mdi-account</v-icon>
+        </v-avatar>
+      </div>
+      <div id="form">
+        <center>
+          <v-text-field
+            v-model="credentials.uname"
+            :rules="[rules.required]"
+            label="Username"
+            required
+            :prepend-icon="'mdi-account'"
+          ></v-text-field>
+          <v-text-field
+            v-model="credentials.password"
+            :rules="[rules.required]"
+            label="Password"
+            required
+            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+            @click:append="show = !show"
+            :type="show ? 'text' : 'password'"
+            :prepend-icon="'mdi-key-variant'"
+          ></v-text-field>
+          <br />
+          <v-btn id="submit" class="secondary justify-center" @click="submit">Login</v-btn>
+          <br />
+          <br />
+          <v-text href="#">"Forgot password?"</v-text>
+          <v-card-text>"Don't have account yet? Sign in here!"</v-card-text>
+        </center>
+      </div>
+    </v-card>
+  </v-img>
 </template>
 <script>
 import AUTH from "@/auth";
@@ -62,7 +60,7 @@ export default {
       e.preventDefault();
       let user = AUTH.login(this.credentials.uname, this.credentials.password);
       AUTH.setUser(user);
-      alert("TestUlit!")
+      alert("TestUlit!");
       this.$router.push("/dashboard");
       // if (this.$refs.form.validate()) {
       //   this.$router.push("/dashboard");
@@ -75,22 +73,29 @@ export default {
 
 <style scoped>
 #card {
-  position: absolute;
-  top: 10%;
-  right: 10%;
+  float: center;
+  position: relative;
+  margin-bottom: 13%;
+  background: linear-gradient(to bottom,	#CD853F 0%, #ffffff 100%);
+  border-radius: 5%;
+  border: double black 1px;
 }
 #title {
+  position: absolute;
   text-align: center;
-  background-color: aqua;
+  border-radius: 10%;
+  top: -20%;
+  left: 37%;
+  left: 37%;
+  z-index: 2;
+}
+#circle {
+  background: black;
 }
 #form {
+  padding-top: 12%;
+  padding-bottom: 5%;
   width: 450px;
   margin-left: 20px;
-}
-#submit {
-  float: center;
-}
-#user{
-  margin-top: 15px;
 }
 </style>

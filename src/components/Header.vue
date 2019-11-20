@@ -1,6 +1,6 @@
 <template>
   <div >
-    <v-app-bar id="head" color="primary" dark>
+    <v-app-bar id="head" dark>
       <v-toolbar-title>SpotMeLogo</v-toolbar-title>
       <v-spacer></v-spacer>
         
@@ -15,12 +15,12 @@
       <v-btn
         text
         @click="signin()"
-        v-show="$route.path === '/register' || $route.path === '/login'? true : false"
+        v-show="$route.path === '/register' || $route.path === '/login'  || $route.path === '/'? true : false"
       >Sign up</v-btn>
       <v-btn
         text
         @click="login()"
-        v-show="$route.path === '/register' || $route.path === '/login'? true : false"
+        v-show="$route.path === '/register' || $route.path === '/login'  || $route.path === '/'? true : false"
       >Login</v-btn>
     </v-app-bar>
   </div>
@@ -56,5 +56,6 @@ export default {
 }
 #head{
   padding-top: 8px;
+  background-color: 	#CD853F;
 }
 </style>
