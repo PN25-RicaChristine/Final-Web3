@@ -205,8 +205,7 @@ export default {
   text-align: center;
   border-radius: 10%;
   top: -13%;
-  left: 37%;
-  left: 37%;
+  left: 35%;
   z-index: 2;
 }
 #circle {
