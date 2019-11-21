@@ -21,8 +21,8 @@
           </v-list-item>
         </v-list>
         <v-divider></v-divider>
-        <v-list>
-          <v-list-item v-for="item in items" :key="item.title">
+        <v-list v-for="item in items" :key="item.title">
+          <v-list-item link @click="redirect(item.href)">
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
@@ -149,8 +149,8 @@ export default {
       //   .then(response => {})
       //   .catch(err => {});
     },
-    redirect() {
-      this.$router.push("/");
+    redirect(pathname) {
+      this.$router.push({path: pathname});
     }
   }
 };
