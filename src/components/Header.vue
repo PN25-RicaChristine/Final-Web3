@@ -1,14 +1,20 @@
 <template>
-  <div >
+  <div>
     <v-app-bar id="head" dark>
-      <v-toolbar-title>SpotMeLogo</v-toolbar-title>
+      <v-toolbar-title><a href="http://localhost:8080/"><v-img src="@/assets/logoSpotMe.png"></v-img></a></v-toolbar-title>
       <v-spacer></v-spacer>
-        
-        <v-row>
-          <v-col md="10">
-            <v-text-field id="search" label="Search" :append-icon="'mdi-magnify'" single-line v-show="$route.path === '/dashboard' ? true : false"></v-text-field>
-          </v-col>
-        </v-row>
+
+      <v-row>
+        <v-col md="10">
+          <v-text-field
+            id="search"
+            label="Search"
+            :append-icon="'mdi-magnify'"
+            single-line
+            v-show="$route.path === '/dashboard' ? true : false"
+          ></v-text-field>
+        </v-col>
+      </v-row>
 
       <v-spacer></v-spacer>
 
@@ -45,17 +51,17 @@ export default {
     },
     login() {
       this.$router.push("/login");
-    },
+    }
   }
 };
 </script>
 
 <style scoped>
-#search{
+#search {
   margin-top: 20px;
 }
-#head{
-  padding-top: 8px;
-  background-color: 	#CD853F;
+#head {
+  padding-top: 2px;
+  background-color: #cd853f;
 }
 </style>
