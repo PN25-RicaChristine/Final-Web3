@@ -1,5 +1,5 @@
 <template>
-  <v-img class="white--text align-end" height="100px" src="@/assets/back1.jpg">
+  <v-img class="white--text align-end" height="100px" id="image" src="@/assets/back1.jpg">
     <v-card id="card" class="mx-auto" max-width="500">
       <div id="title">
         <v-avatar id="circle" size="150">
@@ -75,10 +75,11 @@ export default {
 #card {
   float: center;
   position: relative;
-  margin-bottom: 8%;
+  margin-bottom: 12%;
   background: linear-gradient(to bottom,	#CD853F 0%, #ffffff 100%);
   border-radius: 5%;
   border: double black 1px;
+  
 }
 #title {
   position: absolute;
@@ -92,7 +93,7 @@ export default {
   background: black;
 }
 #form {
-  padding-top: 12%;
+  padding-top: 10%;
   padding-bottom: 5%;
   width: 450px;
   margin-left: 20px;

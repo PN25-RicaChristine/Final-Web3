@@ -3,9 +3,10 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify';
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
-// import VueRouter from 'vue-router'
 import router from "./router";
-// Vue.use(VueRouter)
+import VueSweetAlert2 from 'vue-sweetalert2'
+
+Vue.use(VueSweetAlert2);
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
 

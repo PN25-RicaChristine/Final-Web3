@@ -1,14 +1,16 @@
 <template>
-  <div >
+  <div>
     <v-app-bar id="head" dark>
       <v-toolbar-title>SpotMeLogo</v-toolbar-title>
       <v-spacer></v-spacer>
-        
-        <v-row>
-          <v-col md="10">
-            <v-text-field id="search" label="Search" :append-icon="'mdi-magnify'" single-line v-show="$route.path === '/dashboard' ? true : false"></v-text-field>
-          </v-col>
-        </v-row>
+
+      <v-row>
+        <v-col md="10">
+          <center>
+              <v-text-field label="Search" hide-details :append-outer-icon="'mdi-magnify'" v-show="$route.path === '/dashboard' "></v-text-field>
+          </center>
+        </v-col>
+      </v-row>
 
       <v-spacer></v-spacer>
 
@@ -28,16 +30,7 @@
 <script>
 export default {
   data() {
-    return {
-      // items: [
-      //   { title: "Hotels" },
-      //   { title: "Beaches" },
-      //   { title: "Mountains" },
-      //   { title: "Water Falls" },
-      //   { title: "Historical" },
-      //   { title: "Museums" }
-      // ]
-    };
+    return {};
   },
   methods: {
     signin() {
@@ -45,17 +38,20 @@ export default {
     },
     login() {
       this.$router.push("/login");
-    },
+    }
   }
 };
 </script>
 
 <style scoped>
-#search{
-  margin-top: 20px;
+#searchbar{
+  width:90%;
+  margin-top: 2%;
+   margin-bottom: 2%;
+  background-color: transparent;
 }
-#head{
-  padding-top: 8px;
-  background-color: 	#CD853F;
+#head {
+  /* padding-top: 5px; */
+  background-color: #cd853f;
 }
 </style>
