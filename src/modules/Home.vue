@@ -8,13 +8,18 @@
             <p id="home">Live more with wonders</p>
             <p id="spotxt">Try SpotMe free for 30 days*</p>
         </div>
-        <div class="col-md-6 col-sm6 col-xs-12"><br>
+        <div class="col-md-6 col-sm6 col-xs-12">
+            <br>
             <button type="button" class="btn btn-secondary" id="spot">SpotMe Free</button>
         </div>
-        <div class='box'>
-            <v-img src=" https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image4.jpg?raw=true" class="responsive-image" id="image1" width="300" height="200" aspect-ratio="1.3"></v-img>
-
-        </div>
+        <v-row="center" justify="end">
+            <v-card class="mx-auto" color="aqua" max-width="400" height="200">
+                <v-img src=" https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image4.jpg?raw=true" class="responsive-image" id="image1" width="300" height="200" aspect-ratio="1.3"></v-img>
+            </v-card>
+            <v-card class="mx-auto1" color="aqua" max-width="400" height="200">
+                <v-img src=" https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image5.jpg?raw=true" class="responsive-image" id="image2" width="200" height="200" aspect-ratio="1.3"></v-img>
+            </v-card>
+        <v-row>
     </div>
 </div>
 </template>
@@ -47,7 +52,7 @@ export default {
     font-weight: normal;
     font-size: 2.5em;
     white-space: nowrap;
-    margin-left: 10%;
+    margin-left: 13%;
 }
 
 #spotxt {
@@ -69,55 +74,35 @@ export default {
     margin-top: 420px;
     background-color: gray;
     color: aliceblue;
-    left: 10%;
+    left: 1%;
     line-height: 30px;
     white-space: nowrap;
-
 }
 
-#image1 {
-    /* -ms-transform: rotate(20deg);
-    -webkit-transform: rotate(20deg);
-    transform: rotate(20deg); */
-    margin-left: 0%;
-    margin-top: 0%;
-    height: auto;
-    max-width: 100%;
-    position: sticky;
-}
-
-#image2 {
+.mx-auto {
     -ms-transform: rotate(20deg);
     -webkit-transform: rotate(20deg);
     transform: rotate(20deg);
-    margin-left: 60%;
-    margin-top: -30%;
-    height: auto;
-    max-width: 100%;
-    position: static;
+    margin-top: 8%;
+
+}
+
+.mx-auto1 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-top: 8%;
+    margin-left: 5%;
 }
 
 .flex-container>div {
     margin-top: 2%;
-    margin-left: 5%;
     width: 500px;
     text-align: center;
-    background-color:white;
+    background-color: aqua;
     height: 600px;
     display: flex;
     flex-wrap: nowrap;
-}
-
-.box {
-    -ms-transform: rotate(20deg);
-    -webkit-transform: rotate(20deg);
-    transform: rotate(20deg);
-    display: flex;
-    flex-wrap: nowrap;
-    background-color: gray;
     margin-left: 5%;
-    height: 200px;
-    margin-top:15%;
-
 }
 </style>
