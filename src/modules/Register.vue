@@ -1,6 +1,6 @@
 <template>
   <v-img class="white--text align-end" height="100px" src="@/assets/back1.jpg">
-    <div>
+    <div id="cardto">
       <v-card id="card" class="mx-auto" max-width="500">
         <div id="title">
           <v-avatar id="circle" size="150">
@@ -74,7 +74,7 @@
 </template>
 <script>
 import AUTH from "@/auth";
-import jquery from "jquery";
+// import jquery from "jquery";
 export default {
   data() {
     return {
@@ -110,18 +110,18 @@ export default {
         this.credentials.type
       );
       //for database express
-      let link = `http://localhost:3030/accounts/${this.credentials.name}/${
-        this.credentials.uname
-      }/${this.credentials.adds}/${this.credentials.email}/${
-        this.credentials.password
-      }/${this.credentials.type}`;
-      jquery.ajax({
-        url: link,
-        method: "POST",
-        headers: {
-          "Access-Control-Allow-Origin": "*"
-        }
-      });
+      // let link = `http://localhost:3030/accounts/${this.credentials.name}/${
+      //   this.credentials.uname
+      // }/${this.credentials.adds}/${this.credentials.email}/${
+      //   this.credentials.password
+      // }/${this.credentials.type}`;
+      // jquery.ajax({
+      //   url: link,
+      //   method: "POST",
+      //   headers: {
+      //     "Access-Control-Allow-Origin": "*"
+      //   }
+      // });
       //end db
       sessionStorage.setItem("Name", this.credentials.name),
         sessionStorage.setItem("Username", this.credentials.uname),
@@ -139,10 +139,11 @@ export default {
 <style scoped>
 #card {
   float: center;
-  position: relative;
+  position:relative;
   background: linear-gradient(to bottom, #cd853f 0%, #ffffff 100%);
   border-radius: 5%;
   border: double black 1px;
+  margin-bottom: 8%;
 }
 #title {
   position: absolute;
@@ -160,4 +161,9 @@ export default {
   width: 450px;
   margin-left: 20px;
 }
+/* #cardto{
+  float:center;
+  position: relative;
+  bottom:100%;
+} */
 </style>

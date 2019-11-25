@@ -37,6 +37,7 @@
       <v-col cols="8">
         <v-card class="mx-auto" max-width="800">
           <div>
+
             <!-- Create Post -->
             <v-card-title id="title">Create Post</v-card-title>
           </div>
@@ -107,6 +108,7 @@ export default {
     return {
       description: "",
       post: {
+        
         files: [],
         rating: 0
       },

@@ -75,7 +75,7 @@ export default {
 #card {
   float: center;
   position: relative;
-  margin-bottom: 12%;
+  margin-bottom: 20%;
   background: linear-gradient(to bottom,	#CD853F 0%, #ffffff 100%);
   border-radius: 5%;
   border: double black 1px;
