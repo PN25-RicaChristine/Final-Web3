@@ -74,7 +74,7 @@
 </template>
 <script>
 import AUTH from "@/auth";
-import jquery from "jquery";
+// import jquery from "jquery";
 export default {
   data() {
     return {
@@ -109,27 +109,27 @@ export default {
         this.credentials.conpassword,
         this.credentials.type
       );
-      //for database express
-      let link = `http://localhost:3030/accounts/${this.credentials.name}/${
-        this.credentials.uname
-      }/${this.credentials.adds}/${this.credentials.email}/${
-        this.credentials.password
-      }/${this.credentials.type}`;
-      jquery.ajax({
-        url: link,
-        method: "POST",
-        headers: {
-          "Access-Control-Allow-Origin": "*"
-        }
-      });
-      //end db
+      // //for database express
+      // let link = `http://localhost:3030/accounts/${this.credentials.name}/${
+      //   this.credentials.uname
+      // }/${this.credentials.adds}/${this.credentials.email}/${
+      //   this.credentials.password
+      // }/${this.credentials.type}`;
+      // jquery.ajax({
+      //   url: link,
+      //   method: "POST",
+      //   headers: {
+      //     "Access-Control-Allow-Origin": "*"
+      //   }
+      // });
+      // //end db
       sessionStorage.setItem("Name", this.credentials.name),
         sessionStorage.setItem("Username", this.credentials.uname),
         sessionStorage.setItem("Address", this.credentials.adds),
         sessionStorage.setItem("Email", this.credentials.email),
         sessionStorage.setItem("Password", this.credentials.password),
-        sessionStorage.setItem("Con Password", this.credentials.conpassword);
-      sessionStorage.setItem("User type", this.credentials.type);
+        sessionStorage.setItem("ConPassword", this.credentials.conpassword);
+      sessionStorage.setItem("userType", this.credentials.type);
       this.$router.push("/login");
     }
   }
