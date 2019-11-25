@@ -2,120 +2,89 @@
   <div>
     <v-row>
       <v-col cols="auto" lg="3">
-        <v-navigation-drawer class="secondary" dark permanent>
-          <v-list>
-            <v-list-item>
-              <v-img id="image" src="https://randomuser.me/api/portraits/women/85.jpg"></v-img>
-            </v-list-item>
+        <v-list>
+          <v-list-item>
+            <v-img
+              id="image"
+              src="https://randomuser.me/api/portraits/women/85.jpg"
+              height="200"
+              max-width="200"
+            ></v-img>
+          </v-list-item>
+          <v-list-item link two-line class="title">
+            <v-list-item-content>
+              <v-list-item-title>Sandra Adams</v-list-item-title>
+              <v-list-item-subtitle>
+                <li>Online</li>
+              </v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+        <v-divider></v-divider>
+        <v-list v-for="item in items" :key="item.title">
+          <v-list-item link @click="redirect(item.href)">
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
 
-            <v-list-item link two-line class="title">
-              <v-list-item-content>
-                <v-list-item-title>Sandra Adams</v-list-item-title>
-                <v-list-item-subtitle>
-                  <li>Online</li>
-                </v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-          <v-divider></v-divider>
-          <v-list>
-            <v-list-item v-for="item in items" :key="item.title" link>
-              <v-list-item-icon>
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-icon>
-
-              <v-list-item-content>
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-          <template v-slot:append>
-            <div class="pa-2">
-              <v-btn block>Logout</v-btn>
-            </div>
-          </template>
-        </v-navigation-drawer>
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
       </v-col>
       <v-col cols="8">
         <v-card class="mx-auto" max-width="800">
           <div>
-            <v-card-text>
-              <h2>Create Post</h2>
-            </v-card-text>
+            <v-card-title id="title">Create Post</v-card-title>
           </div>
           <div>
             <div id="text">
-              <v-text-field
-                v-model="description.input"
-                id="desbody"
-                label="Description..."
-                outlined
-              ></v-text-field>
+              <v-textarea outlined name="input-7-4" label="Description..."></v-textarea>
             </div>
             <v-card-actions>
               <v-file-input
-                v-model="files"
+                v-model="post.files"
                 color="deep-purple accent-4"
                 counter
-                multiple
                 placeholder="Add Photo"
                 prepend-icon="mdi-camera"
                 :show-size="1000"
+                accept="image/*"
                 id="fileinput"
+                v-on:change="handleFileUpload"
+                ref="myFiles"
               ></v-file-input>
+
               <v-spacer></v-spacer>
-              <v-btn color="info" id="postbutton">Post</v-btn>
+              <v-btn color="info" id="postbutton" @click="upload_post">Post</v-btn>
             </v-card-actions>
           </div>
         </v-card>
-        <v-card max-width="800" class="mx-auto" id="post">
+        <v-card max-width="800" v-for="(post,x) in posts" :key="x" class="mx-auto" id="post">
           <v-list-item>
             <v-list-item-avatar color="grey"></v-list-item-avatar>
             <v-list-item-content>
-              <v-list-item-title class="headline">Our Changing Planet</v-list-item-title>
-              <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+              <v-list-item-title class="headline">Jessavel Toring</v-list-item-title>
+              <v-list-item-subtitle v-model="time">time here</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
 
-          <v-img src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg" height="194"></v-img>
+          <v-card-text>{{post.description}}</v-card-text>
 
-          <v-card-text>Visit ten places on our planet that are undergoing the biggest changes today.</v-card-text>
-
-          <v-card-actions>
-            <v-btn text color="deep-purple accent-4">Read</v-btn>
-            <v-btn text color="deep-purple accent-4">Bookmark</v-btn>
-            <v-spacer></v-spacer>
-            <v-btn icon>
-              <v-icon>mdi-heart</v-icon>
-            </v-btn>
-            <v-btn icon>
-              <v-icon>mdi-share-variant</v-icon>
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-        <v-card max-width="800" class="mx-auto" id="post">
-          <v-list-item>
-            <v-list-item-avatar color="grey"></v-list-item-avatar>
-            <v-list-item-content>
-              <v-list-item-title class="headline">Our Changing Planet</v-list-item-title>
-              <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-
-          <v-img src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg" height="194"></v-img>
-
-          <v-card-text>Visit ten places on our planet that are undergoing the biggest changes today.</v-card-text>
+          <v-img :src="post.files" height="194"></v-img>
 
           <v-card-actions>
-            <v-btn text color="deep-purple accent-4">Read</v-btn>
-            <v-btn text color="deep-purple accent-4">Bookmark</v-btn>
+            <v-btn icon>
+              <v-icon>mdi-star</v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon>mdi-comment</v-icon>
+            </v-btn>
             <v-spacer></v-spacer>
-            <v-btn icon>
-              <v-icon>mdi-heart</v-icon>
-            </v-btn>
-            <v-btn icon>
-              <v-icon>mdi-share-variant</v-icon>
-            </v-btn>
+            <div class="text-center">
+              <v-rating v-model="post.rating" background-color="yellow" color="yellow" x-large></v-rating>
+            </div>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -126,17 +95,63 @@
 export default {
   data() {
     return {
+      post: {
+        files: [],
+        rating: 0
+      },
       items: [
-        { title: "Home", icon: "dashboard" },
-        { title: "My Account", icon: "account_circle" },
-        { title: "Posts", icon: "library_books" }
+        { href: "/dashboard", title: "Home", icon: "dashboard" },
+        { href: "/login", title: "My Account", icon: "account_circle" },
+        { href: "/login", title: "Logout", icon: "logout" }
       ],
-      files: [],
-
-      description: {
-        input: ""
-      }
+      posts: [
+        {
+          
+          id: 1,
+          files: "https://cdn.vuetifyjs.com/images/cards/mountain.jpg",
+          description:
+            "Visit ten places on our planet that are undergoing the biggest changes today.",
+          rating: 0
+        },
+        {
+          id: 2,
+          files: "https://cdn.vuetifyjs.com/images/cards/mountain.jpg",
+          description:
+            "Visit ten places on our planet that are undergoing the biggest changes today.",
+          rating: 0
+        },
+        {
+          id: 3,
+          files: "https://cdn.vuetifyjs.com/images/cards/mountain.jpg",
+          description:
+            "Bati kag nawong",
+          rating: 0
+        }
+      ]
     };
+  },
+  methods: {
+    handleFileUpload() {
+      try {
+        this.post.files[0] = this.$refs.myFiles.files;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    upload_post() {
+      var upload = new FormData();
+      upload.append("files", this.post.files);
+      console.log(upload);
+      // this.post.id = this.posts.length;
+      // this.posts.push(this.post);
+      // axios
+      //   .post(url, upload)
+      //   .then(response => {})
+      //   .catch(err => {});
+    },
+    redirect(pathname) {
+      this.$router.push({path: pathname});
+    }
   }
 };
 </script>
@@ -145,6 +160,7 @@ export default {
   float: center;
   width: 20px;
 }
+
 #sidebar {
   padding-top: 0px;
 }
@@ -157,8 +173,9 @@ export default {
 }
 #title {
   background-color: lightgray;
-  padding: 1%;
-  margin-bottom: 2%;
+}
+#drawer {
+  background-color: lightgray;
 }
 #input {
   width: 95%;
