@@ -15,7 +15,7 @@
             <v-list-item-content>
               <v-list-item-title>Sandra Adams</v-list-item-title>
               <v-list-item-subtitle>
-                <li>Online</li>
+                Vlogger
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
