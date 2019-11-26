@@ -1,151 +1,323 @@
 <template>
-  <div id="home">
+<div id="home">
     <div class="row">
-      <div class="col-sm">
-        <h1 id="hometext">&nbsp;&nbsp;DREAM,</h1>
-        <h1 id="hometext">&nbsp;DISCOVER,</h1>
-        <h1 id="hometext">EXPERINCE!</h1>
-        <br>
-        <h2 id="text">Live more with wonders.</h2>
-        <br>
-        <br>
-        <br>
-        <h3 id="spotxt">Try SpotMe free for 30 days*</h3>
-        <br>
-        <br>
-        <v-btn id="spot" large color="secondary" @click="submit">SpotMe Free</v-btn>
-      </div>
-      <div class="col-sm">
-        <img id="image1" src="@/assets/image4.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img id="image2" src="@/assets/image5.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img id="image3" src="@/assets/image2.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img id="image4" src="@/assets/image3.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img id="image5" src="@/assets/image6.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img id="image6" src="@/assets/image1.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img id="image7" src="@/assets/image8.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img id="image8" src="@/assets/image7.jpg">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      </div>
+<<<<<<< HEAD
+        <div class="col"  v-bind:class="{responsive:resize}">
+=======
+        <v-col class="col"  v-bind:class="{responsive:resize}">
+>>>>>>> 201543ff5162b79eb5465d897cf33242793f75c9
+            <h1 id="hometext">&nbsp;&nbsp;&nbsp;&nbsp;DREAM,</h1>
+            <h1 id="hometext">&nbsp;DISCOVER,</h1>
+            <h1 id="hometext">EXPERIENCE!</h1>
+            <br>
+            <h2 id="text">Live more with wonders.</h2>
+            <br>
+            <br>
+            <br>
+            <h3 id="spotxt">Try SpotMe free for 30 days*</h3>
+            <br>
+            <br>
+            <v-btn id="button" @click="submit">SpotMe Free</v-btn>
+<<<<<<< HEAD
+        </div>
+
+        <v-card class="mx-auto1" max-width="400" height="200" align="bottom" v-bind:class="{transformer:resize}">
+            <v-img src=" https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image4.jpg?raw=true" class="responsive-image" width="300" height="200"></v-img>
+        </v-card>
+        <v-card class="mx-auto2" max-width="300" height="200"  v-bind:class="{transformer:resize}" >
+            <v-img src=" https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image5.jpg?raw=true" class="responsive-image" width="230" height="200" aspect-ratio="1.3"></v-img>
+        </v-card>
+        <v-card class="mx-auto3" max-width="400" height="150"  v-bind:class="{transformer:resize}">
+            <v-img src="https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image2.jpg?raw=true" class="responsive-image" width="200" height="150" aspect-ratio="1.3"></v-img>
+        </v-card>
+        <v-card class="mx-auto4" max-width="400" height="150"  v-bind:class="{transformer:resize}">
+            <v-img src="https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image3.jpg?raw=true" class="responsive-image" width="300" height="150" aspect-ratio="1.3"></v-img>
+        </v-card>
+        <v-card class="mx-auto5" max-width="400" height="150"  v-bind:class="{transformer:resize}">
+            <v-img src="https://res.cloudinary.com/thetripguru/image/upload/fl_lossy.progressive,e_improve/q_auto:low,c_scale,f_auto,dpr_auto,w_618/02-tours/gc1le2ca1r3k5zrpwqrx" class="responsive-image" width="170" height="190" aspect-ratio="1.3"></v-img>
+        </v-card>
+        <v-card class="mx-auto6" max-width="400" height="150"  v-bind:class="{transformer:resize}">
+            <v-img src="https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image8.jpg?raw=true" class="responsive-image" width="150" height="200" aspect-ratio="1.3"></v-img>
+        </v-card>
+        <v-card class="mx-auto7" max-width="400" height="150"  v-bind:class="{transformer:resize}">
+            <v-img src="https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image6.jpg?raw=true" class="responsive-image" width="300" height="150" aspect-ratio="1.3"></v-img>
+        </v-card>
+        <v-card class="mx-auto8" max-width="300" height="150"  v-bind:class="{transformer:resize}">
+            <v-img src="https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image7.jpg?raw=true" class="responsive-image" width="180" height="150" aspect-ratio="1.3"></v-img>
+        </v-card>
+=======
+        </v-col>
+        
+        <v-card class="mx-auto1" max-width="400" height="200" align="bottom" v-bind:class="{transformer:resize}">
+            <v-img src=" https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image4.jpg?raw=true" class="responsive-image" width="300" height="200"></v-img>
+        </v-card>
+        
+>>>>>>> 201543ff5162b79eb5465d897cf33242793f75c9
     </div>
-  </div>
+</div>
 </template>
+
 <script>
 export default {
-  methods: {
-    submit: function(e) {
-      e.preventDefault();
-      this.$router.push("/register");
+    data() {
+        return {
+            resize: false
+        }
+    },
+    methods: {
+        submit: function (e) {
+            e.preventDefault();
+            this.$router.push("/login");
+        },
+        handleresize() {
+            if (window.innerWidth < 1280) {
+                this.resize = true
+
+            } else {
+                this.resize = false
+            }
+        }
+
+    },
+    created() {
+        window.addEventListener("resize", this.handleresize);
+        this.handleresize();
+    },
+    destroyed() {
+        window.removeEventListener("resize", this.handleresize);
     }
-  }
 };
 </script>
+
 <style scoped>
 #hometext {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
-  font-weight: bold !important;
-  font-size: 75px !important;
-  margin-left: 140px !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+    font-weight: bold !important;
+    font-size: 75px !important;
+    margin-left: 50px !important;
+    white-space: nowrap;
 }
+
 #text {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
-  font-weight: normal !important;
-  font-size: 45px !important;
-  margin-left: 110px !important;
-  line-height: 18px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+    font-weight: normal !important;
+    font-size: 35px !important;
+    margin-left: 74px !important;
+    line-height: 18px;
+    white-space: nowrap;
 }
 
 #spotxt {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
-  font-weight: normal !important;
-  font-size: 30px !important;
-  margin-left: 150px !important;
-  line-height: 0px;
-  color: red;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+    font-weight: normal !important;
+    font-size: 25px !important;
+    margin-left: 100px !important;
+    line-height: 0px;
+    color: red;
+    white-space: nowrap;
 }
-#spot {
-  position: absolute;
-  width: 134px;
-  height: 58px;
-  background-color: gray;
-  margin-left: 240px;
-  border-radius: 30px;
-  color: white;
+
+#button {
+    position: absolute;
+    width: 150px;
+    height: 60px;
+    background-color: gray;
+    margin-left: 170px;
+    border-radius: 20px;
+    color: white;
+    white-space: nowrap;
+}
+
+#button:hover {
+    background-color: #3e8e41
+}
+
+#buton:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 
 #home {
-  margin-top: 90px !important;
-}
-#image1 {
-  width: 300px !important;
-  margin-top: -2% !important;
-  margin-left: 100px;
-  -ms-transform: rotate(20deg); /* IE 9 */
-  -webkit-transform: rotate(20deg); /* Safari 3-8 */
-  transform: rotate(20deg);
-}
-#image2 {
-  width: 250px !important;
-  margin-top: -315px !important;
-  margin-left: 450px;
-  -ms-transform: rotate(20deg); /* IE 9 */
-  -webkit-transform: rotate(20deg); /* Safari 3-8 */
-  transform: rotate(20deg);
+    margin-top: 90px !important;
 }
 
-#image3 {
-  width: 200px !important;
-  margin-top: -10% !important;
-  margin-left: 395px;
-  -ms-transform: rotate(20deg); /* IE 9 */
-  -webkit-transform: rotate(20deg); /* Safari 3-8 */
-  transform: rotate(20deg);
+.mx-auto1 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-top: 20px;
+    margin-left: 660px !important;
+    position: absolute;
 }
 
-#image4 {
-  width: 240px !important;
-  margin-top: -15% !important;
-  margin-left: 335px;
-  -ms-transform: rotate(20deg); /* IE 9 */
-  -webkit-transform: rotate(20deg); /* Safari 3-8 */
-  transform: rotate(20deg);
+.mx-auto2 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 991px !important;
+    position: absolute;
+<<<<<<< HEAD
+
 }
 
-#image5 {
-  width: 250px !important;
-  margin-top: 23% !important;
-  margin-left: -47%;
-  -ms-transform: rotate(20deg); /* IE 9 */
-  -webkit-transform: rotate(20deg); /* Safari 3-8 */
-  transform: rotate(20deg);
+.mx-auto3 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 930px !important;
+    margin-top: 190px;
+=======
+
 }
 
-#image6 {
-  width: 250px !important;
-  margin-top: -80% !important;
-  margin-left: 11%;
-  -ms-transform: rotate(20deg); /* IE 9 */
-  -webkit-transform: rotate(20deg); /* Safari 3-8 */
-  transform: rotate(20deg);
+.mx-auto3 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 930px !important;
+    margin-top: 190px;
+    position: absolute;
+
 }
 
-#image7 {
-  width: 150px !important;
-  margin-top: -98% !important;
-  margin-left: -52%;
-  -ms-transform: rotate(20deg); /* IE 9 */
-  -webkit-transform: rotate(20deg); /* Safari 3-8 */
-  transform: rotate(20deg);
+.mx-auto4 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 872px !important;
+    margin-top: 355px;
+    position: absolute;
+
 }
 
-#image8 {
-  width: 253px !important;
-  margin-top: -45% !important;
-  margin-left: -17%;
-  -ms-transform: rotate(20deg); /* IE 9 */
-  -webkit-transform: rotate(20deg); /* Safari 3-8 */
-  transform: rotate(20deg);
+.mx-auto5 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 725px !important;
+    margin-top: 238px;
+    position: absolute;
+
+}
+
+.mx-auto6 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 578px !important;
+    margin-top: 183px;
+>>>>>>> 201543ff5162b79eb5465d897cf33242793f75c9
+    position: absolute;
+
+}
+
+<<<<<<< HEAD
+.mx-auto4 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 872px !important;
+    margin-top: 355px;
+    position: absolute;
+
+}
+
+.mx-auto5 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 725px !important;
+    margin-top: 238px;
+    position: absolute;
+
+}
+
+.mx-auto6 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 578px !important;
+    margin-top: 183px;
+    position: absolute;
+
+}
+
+.mx-auto7 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 680px !important;
+    margin-top: 460px;
+    position: absolute;
+
+}
+
+.mx-auto8 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 510px !important;
+    margin-top: 375px;
+    position: absolute;
+
+}
+
+=======
+.mx-auto7 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 680px !important;
+    margin-top: 460px;
+    position: absolute;
+
+}
+
+.mx-auto8 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 510px !important;
+    margin-top: 375px;
+    position: absolute;
+
+}
+
+>>>>>>> 201543ff5162b79eb5465d897cf33242793f75c9
+.responsive{
+    float: unset !important;
+    width: 100% !important;
+    background-color: #3e8e41;
+}
+<<<<<<< HEAD
+
+.transformer{
+     -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    transform: unset !important;
+    display:inline-block !important;
+    position:unset !important;
+    margin: 0 !important;
+    
 }
 </style>
+
+=======
+
+.transformer{
+     -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    transform: unset !important;
+    display:inline-block !important;
+    position:unset !important;
+    margin: 0 !important;
+    
+}
+</style>
+>>>>>>> 201543ff5162b79eb5465d897cf33242793f75c9
