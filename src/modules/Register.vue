@@ -79,6 +79,7 @@ export default {
   data() {
     return {
       items: ["User", "Blogger"],
+      // reg_user: [],
       auth: AUTH,
       credentials: {
         name: "",
@@ -100,15 +101,26 @@ export default {
   methods: {
     submit: function(e) {
       e.preventDefault();
-      AUTH.register(
-        this.credentials.name,
-        this.credentials.uname,
-        this.credentials.adds,
-        this.credentials.email,
-        this.credentials.password,
-        this.credentials.conpassword,
-        this.credentials.type
-      );
+      // AUTH.register(
+      //   this.credentials.name,
+      //   this.credentials.uname,
+      //   this.credentials.adds,
+      //   this.credentials.email,
+      //   this.credentials.password,
+      //   this.credentials.conpassword,
+      //   this.credentials.type
+      // );
+      this.axios.post("http://localhost:3000/api/users/",this.credentials);
+      // .then(response => {
+      //   if(){
+
+      //   }
+      // })
+
+
+
+
+
       //for database express
       // let link = `http://localhost:3030/accounts/${this.credentials.name}/${
       //   this.credentials.uname
