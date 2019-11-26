@@ -61,7 +61,8 @@ export default {
       let user = AUTH.login(this.credentials.uname, this.credentials.password);
       AUTH.setUser(user);
       alert("TestUlit!");
-      this.$router.push("/dashboard");
+      alert("Hey Mali")
+      this.$router.push("/bloggerdashboard");
       // if (this.$refs.form.validate()) {
       //   this.$router.push("/dashboard");
       //   alert("valid");
@@ -75,7 +76,7 @@ export default {
 #card {
   float: center;
   position: relative;
-  margin-bottom: 20%;
+  margin-bottom: 13%;
   background: linear-gradient(to bottom,	#CD853F 0%, #ffffff 100%);
   border-radius: 5%;
   border: double black 1px;
@@ -95,7 +96,7 @@ export default {
 #form {
   padding-top: 10%;
   padding-bottom: 5%;
-  width: 450px;
-  margin-left: 20px;
+  width: 85%;
+  margin-left: 30px;
 }
 </style>

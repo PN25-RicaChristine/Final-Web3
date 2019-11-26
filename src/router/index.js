@@ -25,6 +25,11 @@ const routes = [
     component: Dashboard
   },
   {
+    path: "/bloggerdashboard",
+    name: "bdashboard",
+    component: Dashboard
+  },
+  {
     path:"/",
     name:"home",
     component: Home

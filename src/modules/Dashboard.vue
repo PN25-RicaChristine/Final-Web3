@@ -16,7 +16,7 @@
             <v-list-item-content>
               <v-list-item-title>Sandra Adams</v-list-item-title>
               <v-list-item-subtitle>
-                <li>Online</li>
+                User
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
@@ -42,6 +42,8 @@
               <v-textarea v-model="description" outlined name="input-7-4" label="Description..."></v-textarea>
             </div>
             <v-card-actions>
+
+            <!-- file input -->
               <v-file-input
                 v-model="post.files"
                 color="deep-purple accent-4"

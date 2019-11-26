@@ -143,7 +143,7 @@ export default {
   background: linear-gradient(to bottom, #cd853f 0%, #ffffff 100%);
   border-radius: 5%;
   border: double black 1px;
-  margin-bottom: 8%;
+  margin-bottom: 2%;
 }
 #title {
   position: absolute;
