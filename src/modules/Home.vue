@@ -1,7 +1,11 @@
 <template>
 <div id="home">
     <div class="row">
+<<<<<<< HEAD
         <div class="col"  v-bind:class="{responsive:resize}">
+=======
+        <v-col class="col"  v-bind:class="{responsive:resize}">
+>>>>>>> 201543ff5162b79eb5465d897cf33242793f75c9
             <h1 id="hometext">&nbsp;&nbsp;&nbsp;&nbsp;DREAM,</h1>
             <h1 id="hometext">&nbsp;DISCOVER,</h1>
             <h1 id="hometext">EXPERIENCE!</h1>
@@ -14,6 +18,7 @@
             <br>
             <br>
             <v-btn id="button" @click="submit">SpotMe Free</v-btn>
+<<<<<<< HEAD
         </div>
 
         <v-card class="mx-auto1" max-width="400" height="200" align="bottom" v-bind:class="{transformer:resize}">
@@ -40,6 +45,14 @@
         <v-card class="mx-auto8" max-width="300" height="150"  v-bind:class="{transformer:resize}">
             <v-img src="https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image7.jpg?raw=true" class="responsive-image" width="180" height="150" aspect-ratio="1.3"></v-img>
         </v-card>
+=======
+        </v-col>
+        
+        <v-card class="mx-auto1" max-width="400" height="200" align="bottom" v-bind:class="{transformer:resize}">
+            <v-img src=" https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image4.jpg?raw=true" class="responsive-image" width="300" height="200"></v-img>
+        </v-card>
+        
+>>>>>>> 201543ff5162b79eb5465d897cf33242793f75c9
     </div>
 </div>
 </template>
@@ -147,6 +160,17 @@ export default {
     transform: rotate(20deg);
     margin-left: 991px !important;
     position: absolute;
+<<<<<<< HEAD
+
+}
+
+.mx-auto3 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 930px !important;
+    margin-top: 190px;
+=======
 
 }
 
@@ -160,6 +184,38 @@ export default {
 
 }
 
+.mx-auto4 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 872px !important;
+    margin-top: 355px;
+    position: absolute;
+
+}
+
+.mx-auto5 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 725px !important;
+    margin-top: 238px;
+    position: absolute;
+
+}
+
+.mx-auto6 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 578px !important;
+    margin-top: 183px;
+>>>>>>> 201543ff5162b79eb5465d897cf33242793f75c9
+    position: absolute;
+
+}
+
+<<<<<<< HEAD
 .mx-auto4 {
     -ms-transform: rotate(20deg);
     -webkit-transform: rotate(20deg);
@@ -210,11 +266,34 @@ export default {
 
 }
 
+=======
+.mx-auto7 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 680px !important;
+    margin-top: 460px;
+    position: absolute;
+
+}
+
+.mx-auto8 {
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    margin-left: 510px !important;
+    margin-top: 375px;
+    position: absolute;
+
+}
+
+>>>>>>> 201543ff5162b79eb5465d897cf33242793f75c9
 .responsive{
     float: unset !important;
     width: 100% !important;
     background-color: #3e8e41;
 }
+<<<<<<< HEAD
 
 .transformer{
      -ms-transform: rotate(20deg);
@@ -228,3 +307,17 @@ export default {
 }
 </style>
 
+=======
+
+.transformer{
+     -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+    transform: unset !important;
+    display:inline-block !important;
+    position:unset !important;
+    margin: 0 !important;
+    
+}
+</style>
+>>>>>>> 201543ff5162b79eb5465d897cf33242793f75c9
