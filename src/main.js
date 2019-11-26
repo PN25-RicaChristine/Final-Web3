@@ -4,9 +4,9 @@ import vuetify from './plugins/vuetify';
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import router from "./router";
-import VueSweetAlert2 from 'vue-sweetalert2'
+// import VueSweetAlert2 from 'vue-sweetalert2'
 
-Vue.use(VueSweetAlert2);
+// Vue.use(VueSweetAlert2);
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
 

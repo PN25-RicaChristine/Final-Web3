@@ -1,14 +1,18 @@
 <template>
   <div>
     <v-app-bar id="head" dark>
-      <v-toolbar-title>SpotMeLogo</v-toolbar-title>
+      <v-toolbar-title><a href="http://localhost:8080/"><v-img src="@/assets/logoSpotMe.png"></v-img></a></v-toolbar-title>
       <v-spacer></v-spacer>
 
       <v-row>
         <v-col md="10">
-          <center>
-              <v-text-field label="Search" hide-details :append-outer-icon="'mdi-magnify'" v-show="$route.path === '/dashboard' "></v-text-field>
-          </center>
+          <v-text-field
+            id="search"
+            label="Search"
+            :append-outer-icon="'mdi-magnify'"
+            single-line
+            v-show="$route.path === '/dashboard' ? true : false"
+          ></v-text-field>
         </v-col>
       </v-row>
 
@@ -30,7 +34,16 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      // items: [
+      //   { title: "Hotels" },
+      //   { title: "Beaches" },
+      //   { title: "Mountains" },
+      //   { title: "Water Falls" },
+      //   { title: "Historical" },
+      //   { title: "Museums" }
+      // ]
+    };
   },
   methods: {
     signin() {
@@ -44,14 +57,11 @@ export default {
 </script>
 
 <style scoped>
-#searchbar{
-  width:90%;
-  margin-top: 2%;
-   margin-bottom: 2%;
-  background-color: transparent;
+#search {
+  margin-top: 20px;
 }
 #head {
-  /* padding-top: 5px; */
+  padding-top: 2px;
   background-color: #cd853f;
 }
 </style>

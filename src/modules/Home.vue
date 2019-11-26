@@ -17,8 +17,8 @@
         </div>
 
         <v-card class="mx-auto1" max-width="400" height="200" align="bottom" v-bind:class="{transformer:resize}">
-            <v-img src=" @/assets/image4.jpg" class="responsive-image" width="300" height="200"></v-img>
-        </v-card>1
+            <v-img src=" https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image4.jpg?raw=true" class="responsive-image" width="300" height="200"></v-img>
+        </v-card>
         <v-card class="mx-auto2" max-width="300" height="200"  v-bind:class="{transformer:resize}" >
             <v-img src=" https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image5.jpg?raw=true" class="responsive-image" width="230" height="200" aspect-ratio="1.3"></v-img>
         </v-card>
