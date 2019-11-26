@@ -58,10 +58,28 @@ export default {
   methods: {
     submit: function(e) {
       e.preventDefault();
-      let user = AUTH.login(this.credentials.uname, this.credentials.password);
-      AUTH.setUser(user);
-      alert("TestUlit!");
-      this.$router.push("/dashboard");
+      // let user = AUTH.login(this.credentials.uname, this.credentials.password);
+      // AUTH.setUser(user);
+      // alert("TestUlit!");
+      this.axios
+        .post("http://localhost:3000/api/users/login", {
+          username: this.credentials.uname,
+          password: this.credentials.password
+        })
+        .then(function(response) {
+          if (response.status == 404) {
+            alert("Accound not Found");
+          } else if (response.status == 400) {
+            alert("Password Incorrect, Error!");
+          }else if (response.status == 200) {
+            alert("Logged In successfully!");
+            this.$router.push("/dashboard");
+          }
+          // alert("Nag run diri");
+          // console.log(response);
+          // this.$router.push("/dashboard");
+        });
+
       // if (this.$refs.form.validate()) {
       //   this.$router.push("/dashboard");
       //   alert("valid");
@@ -76,10 +94,9 @@ export default {
   float: center;
   position: relative;
   margin-bottom: 12%;
-  background: linear-gradient(to bottom,	#CD853F 0%, #ffffff 100%);
+  background: linear-gradient(to bottom, #cd853f 0%, #ffffff 100%);
   border-radius: 5%;
   border: double black 1px;
-  
 }
 #title {
   position: absolute;

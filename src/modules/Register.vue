@@ -109,20 +109,24 @@ export default {
         this.credentials.conpassword,
         this.credentials.type
       );
-      // //for database express
-      // let link = `http://localhost:3030/accounts/${this.credentials.name}/${
-      //   this.credentials.uname
-      // }/${this.credentials.adds}/${this.credentials.email}/${
-      //   this.credentials.password
-      // }/${this.credentials.type}`;
-      // jquery.ajax({
-      //   url: link,
-      //   method: "POST",
-      //   headers: {
-      //     "Access-Control-Allow-Origin": "*"
-      //   }
-      // });
-      // //end db
+      //start db
+      this.axios
+        .post("http://localhost:3000/api/users/register", {
+          name: this.credentials.name,
+          username: this.credentials.uname,
+          email: this.credentials.email,
+          password: this.credentials.password,
+          confirmPassword: this.credentials.conpassword,
+          userType: this.credentials.type,
+          address: this.credentials.adds
+        })
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+      //end db
       sessionStorage.setItem("Name", this.credentials.name),
         sessionStorage.setItem("Username", this.credentials.uname),
         sessionStorage.setItem("Address", this.credentials.adds),
