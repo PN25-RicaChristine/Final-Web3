@@ -121,11 +121,9 @@ export default {
           address: this.credentials.adds
         })
         .then(function(response) {
-          console.log(response);
-        })
-        .catch(function(error) {
-          console.log(error);
+            alert(response.data);      
         });
+
       //end db
       sessionStorage.setItem("Name", this.credentials.name),
         sessionStorage.setItem("Username", this.credentials.uname),
@@ -134,7 +132,7 @@ export default {
         sessionStorage.setItem("Password", this.credentials.password),
         sessionStorage.setItem("ConPassword", this.credentials.conpassword);
       sessionStorage.setItem("userType", this.credentials.type);
-      this.$router.push("/login");
+  
     }
   }
 };

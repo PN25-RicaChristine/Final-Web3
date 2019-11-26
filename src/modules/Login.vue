@@ -61,29 +61,23 @@ export default {
       // let user = AUTH.login(this.credentials.uname, this.credentials.password);
       // AUTH.setUser(user);
       // alert("TestUlit!");
-      this.axios
-        .post("http://localhost:3000/api/users/login", {
-          username: this.credentials.uname,
-          password: this.credentials.password
-        })
-        .then(function(response) {
-          if (response.status == 404) {
-            alert("Accound not Found");
-          } else if (response.status == 400) {
-            alert("Password Incorrect, Error!");
-          }else if (response.status == 200) {
-            alert("Logged In successfully!");
-            this.$router.push("/dashboard");
-          }
-          // alert("Nag run diri");
-          // console.log(response);
-          // this.$router.push("/dashboard");
-        });
+      // alert("Nag run diri");
+      // console.log(response);
+      // this.$router.push("/dashboard");
 
       // if (this.$refs.form.validate()) {
       //   this.$router.push("/dashboard");
       //   alert("valid");
       // }
+
+      this.axios
+        .post("http://localhost:3000/api/users/login", {
+          username: this.credentials.uname,
+          password: this.credentials.password,
+        })
+        .then(function(response) {
+          alert(response.data);
+        });
     }
   }
 };
