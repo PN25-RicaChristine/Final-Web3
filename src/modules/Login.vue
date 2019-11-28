@@ -25,12 +25,16 @@
             :type="show ? 'text' : 'password'"
             :prepend-icon="'mdi-key-variant'"
           ></v-text-field>
-          <br />
+          <p style="color:red">{{message}}</p>
+          <br>
           <v-btn id="submit" class="secondary justify-center" @click="submit">Login</v-btn>
-          <br />
-          <br />
+          <br>
+          <br>
           <v-text href="#">"Forgot password?"</v-text>
-          <v-card-text>"Don't have account yet? Sign in here!"</v-card-text>
+          <v-card-text>
+            "Don't have account yet?
+            <a href="http://localhost:8080/register">Sign up here</a>!"
+          </v-card-text>
         </center>
       </div>
     </v-card>
@@ -42,6 +46,7 @@ export default {
   data: () => {
     AUTH;
     return {
+      message: "",
       credentials: {
         uname: "",
         password: ""
@@ -57,26 +62,23 @@ export default {
 
   methods: {
     submit: function(e) {
+      let self = this;
       e.preventDefault();
-      // let user = AUTH.login(this.credentials.uname, this.credentials.password);
-      // AUTH.setUser(user);
-      // alert("TestUlit!");
-      // alert("Nag run diri");
-      // console.log(response);
-      // this.$router.push("/dashboard");
-
-      // if (this.$refs.form.validate()) {
-      //   this.$router.push("/dashboard");
-      //   alert("valid");
-      // }
+      let user = AUTH.login(this.credentials.uname, this.credentials.password);
+      AUTH.setUser(user);
 
       this.axios
         .post("http://localhost:3000/api/users/login", {
           username: this.credentials.uname,
-          password: this.credentials.password,
+          password: this.credentials.password
         })
         .then(function(response) {
-          alert(response.data);
+          if (response.data == "Succesfully log in!") {
+            alert(response.data);
+            self.$router.push("/dashboard");
+          } else {
+            self.message = response.data;
+          }
         });
     }
   }
