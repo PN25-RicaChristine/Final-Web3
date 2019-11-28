@@ -33,7 +33,7 @@
           <v-text href="#">"Forgot password?"</v-text>
           <v-card-text>
             "Don't have account yet?
-            <a href="http://localhost:8080/register">Sign up here</a>!"
+            <a @click="redirect('/register')">Sign up here</a>!"
           </v-card-text>
         </center>
       </div>
@@ -80,6 +80,9 @@ export default {
             self.message = response.data;
           }
         });
+    },
+    redirect(router) {
+      this.$router.push(router);
     }
   }
 };

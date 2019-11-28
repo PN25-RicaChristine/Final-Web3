@@ -65,7 +65,10 @@
               label="User Type"
             />
             <v-btn id="submit" class="secondary justify-center" @click="submit">Register</v-btn>
-            <v-card-text>"Already have an account? <a href="http://localhost:8080/login">Log in</a>!"</v-card-text>
+            <v-card-text>
+              "Already have an account?
+              <a @click="redirect('/login')">Log in</a>!"
+            </v-card-text>
           </center>
         </div>
       </v-card>
@@ -136,6 +139,9 @@ export default {
         sessionStorage.setItem("Password", this.credentials.password),
         sessionStorage.setItem("ConPassword", this.credentials.conpassword);
       sessionStorage.setItem("userType", this.credentials.type);
+    },
+    redirect(router) {
+      this.$router.push(router);
     }
   }
 };
