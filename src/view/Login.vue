@@ -40,6 +40,36 @@
     </v-card>
   </v-img>
 </template>
+
+<style scoped>
+#card {
+  float: center;
+  position: relative;
+  margin-bottom: 250px;
+  background: linear-gradient(to bottom, #cd853f 0%, #ffffff 100%);
+  border-radius: 25px;
+  border: double black 1px;
+}
+#title {
+  position: absolute;
+  text-align: center;
+  border-radius: 10%;
+  top: -90px;
+  left: 35%;
+  z-index: 2;
+}
+#circle {
+  background: black;
+}
+#form {
+  padding-top: 10%;
+  padding-bottom: 5%;
+  width: 450px;
+  margin-left: 20px;
+}
+</style>
+
+
 <script>
 import AUTH from "@/auth";
 export default {
@@ -62,24 +92,30 @@ export default {
 
   methods: {
     submit: function(e) {
-      let self = this;
-      e.preventDefault();
-      let user = AUTH.login(this.credentials.uname, this.credentials.password);
-      AUTH.setUser(user);
+      e.preventDefault()
+      let username = this.username 
+      let password = this.password
+      this.$store.dispatch('loginAsync', { username, password })
+        .then(() => this.$router.push('/dashboard'))
+        .catch(err => console.log(err))
+      // let self = this;
+      // e.preventDefault();
+      // let user = AUTH.login(this.credentials.uname, this.credentials.password);
+      // AUTH.setUser(user);
 
-      this.axios
-        .post("http://localhost:3000/api/users/login", {
-          username: this.credentials.uname,
-          password: this.credentials.password
-        })
-        .then(function(response) {
-          if (response.data == "Succesfully log in!") {
-            alert(response.data);
-            self.$router.push("/dashboard");
-          } else {
-            self.message = response.data;
-          }
-        });
+      // this.axios
+      //   .post("http://localhost:3000/api/users/login", {
+      //     username: this.credentials.uname,
+      //     password: this.credentials.password
+      //   })
+      //   .then(function(response) {
+      //     if (response.data == "Succesfully log in!") {
+      //       alert(response.data);
+      //       self.$router.push("/dashboard");
+      //     } else {
+      //       self.message = response.data;
+      //     }
+      //   });
     },
     redirect(router) {
       this.$router.push(router);
@@ -102,30 +138,3 @@ export default {
 };
 </script>
 
-<style scoped>
-#card {
-  float: center;
-  position: relative;
-  margin-bottom: 20%;
-  background: linear-gradient(to bottom, #cd853f 0%, #ffffff 100%);
-  border-radius: 5%;
-  border: double black 1px;
-}
-#title {
-  position: absolute;
-  text-align: center;
-  border-radius: 10%;
-  top: -23%;
-  left: 35%;
-  z-index: 2;
-}
-#circle {
-  background: black;
-}
-#form {
-  padding-top: 10%;
-  padding-bottom: 5%;
-  width: 450px;
-  margin-left: 20px;
-}
-</style>

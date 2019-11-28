@@ -4,10 +4,8 @@ import vuetify from './plugins/vuetify';
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import router from "./router";
-<<<<<<< HEAD
 import api from '@/auth/api.js'
-
-=======
+import store from './store.js'
 //Import Axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -15,7 +13,6 @@ import VueAxios from 'vue-axios'
 
 Vue.use(VueAxios,axios)
 // Vue.use(VueSweetAlert2);
->>>>>>> a0e26de53e50a64a80d70f9ea42d386069e84766
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
 Vue.mixin(api)
@@ -29,6 +26,7 @@ Vue.use(require('vue-pusher'), {
 
 new Vue({
   router,
+  store,
   vuetify,
   render: h => h(App)
 }).$mount('#app')
