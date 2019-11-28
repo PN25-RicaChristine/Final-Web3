@@ -60,7 +60,7 @@
             ></v-text-field>
             <v-select
               :items="items"
-              :prepend-icon="'mdi-account'"
+              :prepend-icon="'mdi-account-plus'"
               v-model="credentials.type"
               label="User Type"
             />
@@ -155,7 +155,7 @@ export default {
   background: linear-gradient(to bottom, #cd853f 0%, #ffffff 100%);
   border-radius: 5%;
   border: double black 1px;
-  margin-bottom: 2%;
+  margin-bottom: 0%;
 }
 #title {
   position: absolute;
@@ -169,7 +169,7 @@ export default {
   background: black;
 }
 #form {
-  padding-top: 10%;
+  padding-top: 7%;
   width: 450px;
   margin-left: 20px;
 }

@@ -1,5 +1,10 @@
 <template>
-  <v-img class="white--text align-end" height="100px" id="image" src="@/assets/back1.jpg">
+  <v-img
+    class="white--text align-end"
+    height="100px"
+    id="image"
+    src="@/assets/back1.jpg"
+  >
     <v-card id="card" class="mx-auto" max-width="500">
       <div id="title">
         <v-avatar id="circle" size="150">
@@ -26,7 +31,9 @@
             :prepend-icon="'mdi-key-variant'"
           ></v-text-field>
           <br />
-          <v-btn id="submit" class="secondary justify-center" @click="submit">Login</v-btn>
+          <v-btn id="submit" class="secondary justify-center" @click="submit"
+            >Login</v-btn
+          >
           <br />
           <br />
           <v-text href="#">"Forgot password?"</v-text>
@@ -61,13 +68,22 @@ export default {
       let user = AUTH.login(this.credentials.uname, this.credentials.password);
       AUTH.setUser(user);
       alert("TestUlit!");
-      alert("Hey Mali")
-      this.$router.push("/bloggerdashboard");
-      // if (this.$refs.form.validate()) {
-      //   this.$router.push("/dashboard");
-      //   alert("valid");
-      // }
+      this.$router.push("/dashboard");
+    },
+    handleresize() {
+      if (window.innerWidth < 1280) {
+        this.resize = true;
+      } else {
+        this.resize = false;
+      }
     }
+  },
+  created() {
+    window.addEventListener("resize", this.handleresize);
+    this.handleresize();
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.handleresize);
   }
 };
 </script>
@@ -76,11 +92,10 @@ export default {
 #card {
   float: center;
   position: relative;
-  margin-bottom: 13%;
-  background: linear-gradient(to bottom,	#CD853F 0%, #ffffff 100%);
+  margin-bottom: 12%;
+  background: linear-gradient(to bottom, #cd853f 0%, #ffffff 100%);
   border-radius: 5%;
   border: double black 1px;
-  
 }
 #title {
   position: absolute;
@@ -96,7 +111,7 @@ export default {
 #form {
   padding-top: 10%;
   padding-bottom: 5%;
-  width: 85%;
-  margin-left: 30px;
+  width: 450px;
+  margin-left: 20px;
 }
 </style>
