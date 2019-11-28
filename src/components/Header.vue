@@ -9,7 +9,7 @@
           <v-text-field
             id="search"
             label="Search"
-            :append-icon="'mdi-magnify'"
+            :append-outer-icon="'mdi-magnify'"
             single-line
             v-show="$route.path === '/dashboard' ? true : false"
           ></v-text-field>
