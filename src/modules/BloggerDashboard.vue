@@ -3,7 +3,8 @@
     <v-row>
       <v-col cols="auto" lg="3">
         <v-list>
-          <v-list-item>
+          <!-- sidebar -->
+          <v-list-item style="text-align:center">
             <v-img
               id="image"
               src="https://randomuser.me/api/portraits/women/85.jpg"
@@ -13,22 +14,22 @@
           </v-list-item>
           <v-list-item link two-line class="title">
             <v-list-item-content>
-              <v-list-item-title>Sandra Adams</v-list-item-title>
+              <v-list-item-title>Blogger Name</v-list-item-title>
               <v-list-item-subtitle>
-                Vlogger
+                Blogger
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-list>
         <v-divider></v-divider>
-        <v-list>
-          <v-list-item v-for="item in items" :key="item.title" link>
+        <v-list v-for="item in items" :key="item.title">
+          <v-list-item link @click="redirect(item.href)">
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
 
             <v-list-item-content>
-              <v-list-item-title link>{{ item.title }}</v-list-item-title>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -36,47 +37,52 @@
       <v-col cols="8">
         <v-card class="mx-auto" max-width="800">
           <div>
-            <v-card-title id="title">Create Post</v-card-title>
+            <!-- Create Post -->
+            <v-card-title id="title">Create Vlog</v-card-title>
           </div>
           <div>
             <div id="text">
-              <v-textarea
-                outlined
-                name="input-7-4"
-                label="Description..."
-              ></v-textarea>
+              <v-textarea v-model="description" outlined name="input-7-4" label="Description..."></v-textarea>
             </div>
             <v-card-actions>
               <v-file-input
-                v-model="files"
+                v-model="post.files"
                 color="deep-purple accent-4"
                 counter
-                multiple
                 placeholder="Add Photo"
                 prepend-icon="mdi-camera"
                 :show-size="1000"
+                accept="image/*"
                 id="fileinput"
+                v-on:change="handleFileUpload"
+                ref="myFiles"
               ></v-file-input>
+
               <v-spacer></v-spacer>
-              <v-btn color="info" id="postbutton">Post</v-btn>
+
+              <!-- Post Button -->
+              <v-btn color="info" id="postbutton" @click="upload_post">Post</v-btn>
             </v-card-actions>
           </div>
         </v-card>
 
-        
-        <v-card max-width="800" class="mx-auto" id="post">
+        <!-- Posts -->
+        <!-- <div v-for="(item, index) in this.createPost" :key="index"> -->
+        <v-card max-width="800" v-for="(post,x) in posts" :key="x" class="mx-auto" id="post">
           <v-list-item>
             <v-list-item-avatar color="grey"></v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title class="headline">Jessavel Toring</v-list-item-title>
-              <v-list-item-subtitle>time here</v-list-item-subtitle>
+              <v-list-item-subtitle v-model="time">time here</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
 
-          <v-card-text>Visit ten places on our planet that are undergoing the biggest changes today.</v-card-text>
+          <!-- <v-card-text>{{post.description}}</v-card-text> -->
 
-          <v-img src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg" height="194"></v-img>
+          <v-card-text>{{description}}</v-card-text>
 
+          <v-img :src="post.files" height="194"></v-img>
+          <!-- Posts Actions -->
           <v-card-actions>
             <v-btn icon>
               <v-icon>mdi-star</v-icon>
@@ -86,10 +92,11 @@
             </v-btn>
             <v-spacer></v-spacer>
             <div class="text-center">
-              <v-rating v-model="rating" background-color="yellow" color="yellow" x-large></v-rating>
+              <v-rating v-model="post.rating" background-color="yellow" color="yellow" x-large></v-rating>
             </div>
           </v-card-actions>
         </v-card>
+        <!-- </div> -->
       </v-col>
     </v-row>
   </div>
@@ -98,23 +105,60 @@
 export default {
   data() {
     return {
+      description: "",
+      post: {
+        files: [],
+        rating: 0
+      },
       items: [
         { href: "/dashboard", title: "Home", icon: "dashboard" },
         { href: "/login", title: "My Account", icon: "account_circle" },
         { href: "/login", title: "Logout", icon: "logout" }
-      ],
-      files: [],
-      description: {
-        input: ""
-      },
-      rating: 0,
-
-      methods: {
-        redirect() {
-          this.$router.push("/");
-        }
-      }
+      ]
+      // posts: [
+      //   {
+      //     id: 1,
+      //     files: "https://cdn.vuetifyjs.com/images/cards/mountain.jpg",
+      //     description:
+      //       "Visit ten places on our planet that are undergoing the biggest changes today.",
+      //     rating: 0
+      //   },
+      //   {
+      //     id: 2,
+      //     files: "https://cdn.vuetifyjs.com/images/cards/mountain.jpg",
+      //     description:
+      //       "Visit ten places on our planet that are undergoing the biggest changes today.",
+      //     rating: 0
+      //   }
+      // ]
     };
+  },
+  methods: {
+    handleFileUpload() {
+      try {
+        this.post.files[0] = this.$refs.myFiles.files;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    upload_post() {
+      var upload = new FormData();
+      upload.append("files", this.post.files);
+      console.log(upload);
+      // this.post.id = this.posts.length;
+      // this.posts.push(this.post);
+      // axios
+      //   .post(url, upload)
+      //   .then(response => {})
+      //   .catch(err => {});
+    },
+    redirect(pathname) {
+      this.$router.push({ path: pathname });
+    }
+    // createPost(){
+    //    var object = {
+
+    //    }
   }
 };
 </script>

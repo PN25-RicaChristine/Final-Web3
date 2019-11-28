@@ -60,7 +60,7 @@
             ></v-text-field>
             <v-select
               :items="items"
-              :prepend-icon="'mdi-account'"
+              :prepend-icon="'mdi-account-plus'"
               v-model="credentials.type"
               label="User Type"
             />
@@ -167,7 +167,7 @@ export default {
   background: black;
 }
 #form {
-  padding-top: 10%;
+  padding-top: 7%;
   width: 450px;
   margin-left: 20px;
 }

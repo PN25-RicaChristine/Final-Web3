@@ -31,14 +31,14 @@
         <v-card class="mx-auto5" max-width="400" height="150"  v-bind:class="{transformer:resize}">
             <v-img src="https://res.cloudinary.com/thetripguru/image/upload/fl_lossy.progressive,e_improve/q_auto:low,c_scale,f_auto,dpr_auto,w_618/02-tours/gc1le2ca1r3k5zrpwqrx" class="responsive-image" width="170" height="190" aspect-ratio="1.3"></v-img>
         </v-card>
-        <v-card class="mx-auto6" max-width="400" height="150"  v-bind:class="{transformer:resize}">
-            <v-img src="https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image8.jpg?raw=true" class="responsive-image" width="150" height="200" aspect-ratio="1.3"></v-img>
+        <v-card class="mx-auto6" max-width="400" height="188"  v-bind:class="{transformer:resize}">
+            <v-img src="https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image8.jpg?raw=true" class="responsive-image" width="150" height="188" aspect-ratio="1.3"></v-img>
         </v-card>
-        <v-card class="mx-auto7" max-width="400" height="150"  v-bind:class="{transformer:resize}">
-            <v-img src="https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image6.jpg?raw=true" class="responsive-image" width="300" height="150" aspect-ratio="1.3"></v-img>
+        <v-card class="mx-auto7" max-width="400" height="130"  v-bind:class="{transformer:resize}">
+            <v-img src="https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image6.jpg?raw=true" class="responsive-image" width="300" height="130" aspect-ratio="1.3"></v-img>
         </v-card>
-        <v-card class="mx-auto8" max-width="300" height="150"  v-bind:class="{transformer:resize}">
-            <v-img src="https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image7.jpg?raw=true" class="responsive-image" width="180" height="150" aspect-ratio="1.3"></v-img>
+        <v-card class="mx-auto8" max-width="300" height="130"  v-bind:class="{transformer:resize}">
+            <v-img src="https://github.com/Heavenjes/Final-Web3/blob/master/src/assets/image7.jpg?raw=true" class="responsive-image" width="180" height="130" aspect-ratio="1.3"></v-img>
         </v-card>
     </div>
 </div>
@@ -82,7 +82,7 @@ export default {
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
     font-weight: bold !important;
     font-size: 75px !important;
-    margin-left: 50px !important;
+    margin-left: 70px !important;
     white-space: nowrap;
 }
 
@@ -91,7 +91,7 @@ export default {
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
     font-weight: normal !important;
     font-size: 35px !important;
-    margin-left: 74px !important;
+    margin-left: 80px !important;
     line-height: 18px;
     white-space: nowrap;
 }
@@ -136,8 +136,8 @@ export default {
     -ms-transform: rotate(20deg);
     -webkit-transform: rotate(20deg);
     transform: rotate(20deg);
-    margin-top: 20px;
-    margin-left: 660px !important;
+    margin-top: 5px;
+    margin-left: 825px !important;
     position: absolute;
 }
 
@@ -145,7 +145,8 @@ export default {
     -ms-transform: rotate(20deg);
     -webkit-transform: rotate(20deg);
     transform: rotate(20deg);
-    margin-left: 991px !important;
+    margin-left: 1163px !important;
+    margin-top:-10px;
     position: absolute;
 
 }
@@ -154,8 +155,8 @@ export default {
     -ms-transform: rotate(20deg);
     -webkit-transform: rotate(20deg);
     transform: rotate(20deg);
-    margin-left: 930px !important;
-    margin-top: 190px;
+    margin-left: 1101px !important;
+    margin-top: 180px;
     position: absolute;
 
 }
@@ -164,8 +165,8 @@ export default {
     -ms-transform: rotate(20deg);
     -webkit-transform: rotate(20deg);
     transform: rotate(20deg);
-    margin-left: 872px !important;
-    margin-top: 355px;
+    margin-left: 1040px !important;
+    margin-top: 345px;
     position: absolute;
 
 }
@@ -174,8 +175,8 @@ export default {
     -ms-transform: rotate(20deg);
     -webkit-transform: rotate(20deg);
     transform: rotate(20deg);
-    margin-left: 725px !important;
-    margin-top: 238px;
+    margin-left: 888px !important;
+    margin-top: 225px;
     position: absolute;
 
 }
@@ -184,8 +185,8 @@ export default {
     -ms-transform: rotate(20deg);
     -webkit-transform: rotate(20deg);
     transform: rotate(20deg);
-    margin-left: 578px !important;
-    margin-top: 183px;
+    margin-left: 732px !important;
+    margin-top: 166px;
     position: absolute;
 
 }
@@ -194,8 +195,8 @@ export default {
     -ms-transform: rotate(20deg);
     -webkit-transform: rotate(20deg);
     transform: rotate(20deg);
-    margin-left: 680px !important;
-    margin-top: 460px;
+    margin-left: 780px !important;
+    margin-top: 420px;
     position: absolute;
 
 }
@@ -204,16 +205,15 @@ export default {
     -ms-transform: rotate(20deg);
     -webkit-transform: rotate(20deg);
     transform: rotate(20deg);
-    margin-left: 510px !important;
-    margin-top: 375px;
+    margin-left: 610px !important;
+    margin-top: 335px;
     position: absolute;
 
 }
 
 .responsive{
     float: unset !important;
-    width: 100% !important;
-    background-color: #3e8e41;
+    width: 120% !important;
 }
 
 .transformer{
