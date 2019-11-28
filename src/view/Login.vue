@@ -91,13 +91,13 @@ export default {
         this.resize = false;
       }
     },
-  created() {
-    window.addEventListener("resize", this.handleresize);
-    this.handleresize();
-  },
-  destroyed() {
-    window.removeEventListener("resize", this.handleresize);
-  }
+    created() {
+      window.addEventListener("resize", this.handleresize);
+      this.handleresize();
+    },
+    destroyed() {
+      window.removeEventListener("resize", this.handleresize);
+    }
   }
 };
 </script>

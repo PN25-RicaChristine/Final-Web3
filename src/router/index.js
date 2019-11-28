@@ -1,8 +1,8 @@
 
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Signup from "@/modules/Register";
-import Login from "@/modules/Login";
+import Signup from "@/view/Register";
+import Login from "@/view/Login";
 import Dashboard from "@/modules/Dashboard";
 import Home from "@/modules/Home"
 

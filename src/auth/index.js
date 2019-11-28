@@ -1,25 +1,24 @@
+import ROUTER from 'router'
 export default {
     user: null,
     registeredUser: [],
+    postmessage: [],
     setUser(user) {
         this.user = user
     },
     getUser(user) {
         this.user = user
     },
-    register(name, uname, adds, email, password, confirmpassword) {
-        if (name == '' || uname == '' || adds == '' || email == '' || password=='' || confirmpassword=='') {
-            this.$router.push("/register")
-            // alert("Gwapa")
+    register(username, password, email, confirmpassword) {
+        if (username == '' || password == '' || email == '' || password != confirmpassword) {
+            ROUTER.push("/Register")
         } else {
             this.registeredUser.push({
-                name: name,
-                username: uname,
-                address: adds,
-                email: email,
+                username: username,
                 password: password,
+                email: email
             });
-            // alert("TEST")
+            ROUTER.push("/Login");
         }
     },
     login(username, password) {
@@ -30,4 +29,24 @@ export default {
         }
         return null
     },
+    logout() {
+        this.user = null
+        ROUTER.push('/Login')
+    },
+    update(username,password) {
+        this.username =username;
+        this.password =password;
+        ROUTER.push('/Update')
+    },
+    save() {
+        this.user = null
+        ROUTER.push('/PersonalInfo')
+    },
+    postText(text){
+        this.postmessage.push({
+            text : text
+        })
+
+    },
+
 }
