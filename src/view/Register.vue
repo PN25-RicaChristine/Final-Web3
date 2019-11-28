@@ -102,6 +102,7 @@ export default {
   },
   methods: {
     submit: function(e) {
+      e.preventDefault()
       let data = {
         name: this.credentials.name,
         username: this.credentials.uname,
