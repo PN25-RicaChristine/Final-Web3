@@ -1,10 +1,5 @@
 <template>
-  <v-img
-    class="white--text align-end"
-    height="100px"
-    id="image"
-    src="@/assets/back1.jpg"
-  >
+  <v-img class="white--text align-end" height="100px" id="image" src="@/assets/back1.jpg">
     <v-card id="card" class="mx-auto" max-width="500">
       <div id="title">
         <v-avatar id="circle" size="150">
@@ -30,14 +25,16 @@
             :type="show ? 'text' : 'password'"
             :prepend-icon="'mdi-key-variant'"
           ></v-text-field>
+          <p style="color:red">{{message}}</p>
           <br />
-          <v-btn id="submit" class="secondary justify-center" @click="submit"
-            >Login</v-btn
-          >
+          <v-btn id="submit" class="secondary justify-center" @click="submit">Login</v-btn>
           <br />
           <br />
           <v-text href="#">"Forgot password?"</v-text>
-          <v-card-text>"Don't have account yet? Sign in here!"</v-card-text>
+          <v-card-text>
+            "Don't have account yet?
+            <a @click="redirect('/register')">Sign up here</a>!"
+          </v-card-text>
         </center>
       </div>
     </v-card>
@@ -49,6 +46,7 @@ export default {
   data: () => {
     AUTH;
     return {
+      message: "",
       credentials: {
         uname: "",
         password: ""
@@ -64,11 +62,27 @@ export default {
 
   methods: {
     submit: function(e) {
+      let self = this;
       e.preventDefault();
       let user = AUTH.login(this.credentials.uname, this.credentials.password);
       AUTH.setUser(user);
-      alert("TestUlit!");
-      this.$router.push("/dashboard");
+
+      this.axios
+        .post("http://localhost:3000/api/users/login", {
+          username: this.credentials.uname,
+          password: this.credentials.password
+        })
+        .then(function(response) {
+          if (response.data == "Succesfully log in!") {
+            alert(response.data);
+            self.$router.push("/dashboard");
+          } else {
+            self.message = response.data;
+          }
+        });
+    },
+    redirect(router) {
+      this.$router.push(router);
     },
     handleresize() {
       if (window.innerWidth < 1280) {
@@ -76,14 +90,14 @@ export default {
       } else {
         this.resize = false;
       }
-    }
-  },
+    },
   created() {
     window.addEventListener("resize", this.handleresize);
     this.handleresize();
   },
   destroyed() {
     window.removeEventListener("resize", this.handleresize);
+  }
   }
 };
 </script>
@@ -92,7 +106,7 @@ export default {
 #card {
   float: center;
   position: relative;
-  margin-bottom: 12%;
+  margin-bottom: 20%;
   background: linear-gradient(to bottom, #cd853f 0%, #ffffff 100%);
   border-radius: 5%;
   border: double black 1px;

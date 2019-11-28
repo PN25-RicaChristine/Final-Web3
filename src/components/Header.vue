@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app-bar id="head" dark>
-      <v-toolbar-title><a href="http://localhost:8080/"><v-img src="@/assets/logoSpotMe.png"></v-img></a></v-toolbar-title>
+      <v-toolbar-title><a  @click="home()"><v-img src="@/assets/logoSpotMe.png"></v-img></a></v-toolbar-title>
       <v-spacer></v-spacer>
 
       <v-row>
@@ -35,14 +35,7 @@
 export default {
   data() {
     return {
-      // items: [
-      //   { title: "Hotels" },
-      //   { title: "Beaches" },
-      //   { title: "Mountains" },
-      //   { title: "Water Falls" },
-      //   { title: "Historical" },
-      //   { title: "Museums" }
-      // ]
+
     };
   },
   methods: {
@@ -51,6 +44,9 @@ export default {
     },
     login() {
       this.$router.push("/login");
+    },
+    home() {
+      this.$router.push("/");
     }
   }
 };
