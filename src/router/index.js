@@ -1,10 +1,11 @@
 
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Signup from "@/modules/Register";
-import Login from "@/modules/Login";
-import Dashboard from "@/modules/Dashboard";
-import Home from "@/modules/Home"
+import Signup from "@/view/Register";
+import Login from "@/view/Login";
+import Dashboard from "@/view/Dashboard";
+import Home from "@/view/Home";
+import MyAccount from "@/view/MyAccount"
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path:"/",
     name:"home",
     component: Home
+  },
+  {
+    path:"/myaccount",
+    name:"myaccount",
+    component:MyAccount
   },
 ]
 

@@ -42,6 +42,11 @@
             <div id="text">
               <v-textarea v-model="description" outlined name="input-7-4" label="Description..."></v-textarea>
             </div>
+            <!-- <div class="btn btn-primary btn-sm float-left">
+              <span>Choose file</span>
+              <input type="file" />
+            </div>
+             -->
             <v-card-actions>
               <v-file-input
                 v-model="post.files"
@@ -82,7 +87,7 @@
 
           <!-- Like actions -->
           <v-card-actions>
-            <v-btn text icon color="error">
+            <v-btn text icon @click="type='host'">
               <v-icon>mdi-thumb-up</v-icon>
             </v-btn>
 
@@ -101,7 +106,7 @@
         <v-dialog v-model="dialog" max-width="500px">
           <!-- Comment Dialog here!! -->
           <v-card>
-            <br>
+            <br />
             <v-card-text>
               <v-text-field outlined label="Comment here..."></v-text-field>
             </v-card-text>
@@ -170,8 +175,8 @@ export default {
     redirect(pathname) {
       this.$router.push({ path: pathname });
     },
-    changeColor(){
-      this.changeColor="deep-orange";
+    changeColor() {
+      this.changeColor = "deep-orange";
     }
   }
 };

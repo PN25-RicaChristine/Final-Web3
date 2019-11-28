@@ -4,11 +4,18 @@ import vuetify from './plugins/vuetify';
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import router from "./router";
-// import VueSweetAlert2 from 'vue-sweetalert2'
+import api from '@/auth/api.js'
 
-// Vue.use(VueSweetAlert2);
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
+Vue.mixin(api)
+Vue.use(require('vue-pusher'), {
+  api_key: '202380678230df0b4d46',
+  options: {
+    cluster: 'ap1',
+    encrypted: true,
+  }
+})
 
 new Vue({
   router,
