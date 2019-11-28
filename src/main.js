@@ -4,8 +4,18 @@ import vuetify from './plugins/vuetify';
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import router from "./router";
+<<<<<<< HEAD
 import api from '@/auth/api.js'
 
+=======
+//Import Axios
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+// import VueSweetAlert2 from 'vue-sweetalert2'
+
+Vue.use(VueAxios,axios)
+// Vue.use(VueSweetAlert2);
+>>>>>>> a0e26de53e50a64a80d70f9ea42d386069e84766
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
 Vue.mixin(api)

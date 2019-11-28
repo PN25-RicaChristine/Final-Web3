@@ -10,7 +10,7 @@ export default {
     register(name, uname, adds, email, password, confirmpassword) {
         if (name == '' || uname == '' || adds == '' || email == '' || password=='' || confirmpassword=='') {
             this.$router.push("/register")
-            alert("Gwapa")
+            // alert("Gwapa")
         } else {
             this.registeredUser.push({
                 name: name,
@@ -19,7 +19,7 @@ export default {
                 email: email,
                 password: password,
             });
-            alert("TEST")
+            // alert("TEST")
         }
     },
     login(username, password) {
