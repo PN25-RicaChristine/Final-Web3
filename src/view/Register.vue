@@ -75,6 +75,38 @@
     </div>
   </v-img>
 </template>
+<style scoped>
+#card {
+  float: center;
+  position: relative;
+  background: linear-gradient(to bottom, #cd853f 0%, #ffffff 100%);
+  border-radius: 25px;
+  border: solid black 1px;
+  bottom: 1px;
+}
+#title {
+  position: absolute;
+  text-align: center;
+  border-radius: 10px;
+  top: -95px;
+  left: 165px;
+  z-index: 2;
+}
+#circle {
+  background: black;
+}
+#form {
+  padding-top: 40px;
+  width: 450px;
+  margin-left: 20px;
+}
+</style>
+
+
+
+
+
+
 <script>
 import AUTH from "@/auth";
 // import jquery from "jquery";
@@ -160,29 +192,3 @@ export default {
 };
 </script>
 
-<style scoped>
-#card {
-  float: center;
-  position: relative;
-  background: linear-gradient(to bottom, #cd853f 0%, #ffffff 100%);
-  border-radius: 25px;
-  border: solid black 1px;
-  bottom: 80px;
-}
-#title {
-  position: absolute;
-  text-align: center;
-  border-radius: 10px;
-  top: -95px;
-  left: 165px;
-  z-index: 2;
-}
-#circle {
-  background: black;
-}
-#form {
-  padding-top: 40px;
-  width: 450px;
-  margin-left: 20px;
-}
-</style>

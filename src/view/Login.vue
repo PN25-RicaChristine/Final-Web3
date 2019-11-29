@@ -45,7 +45,7 @@
 #card {
   float: center;
   position: relative;
-  margin-bottom: 250px;
+  margin-bottom: 100px;
   background: linear-gradient(to bottom, #cd853f 0%, #ffffff 100%);
   border-radius: 25px;
   border: double black 1px;
@@ -93,11 +93,14 @@ export default {
   methods: {
     submit: function(e) {
       e.preventDefault()
-      let username = this.username 
-      let password = this.password
-      this.$store.dispatch('loginAsync', { username, password })
-        .then(() => this.$router.push('/dashboard'))
-        .catch(err => console.log(err))
+      this.$router.push('/dashboard')
+      // let username = this.username 
+      // let password = this.password
+      // this.$store.dispatch('loginAsync', { username, password })
+      //   .then(() => this.$router.push('/dashboard'))
+      //   .catch(err => console.log(err))
+
+      
       // let self = this;
       // e.preventDefault();
       // let user = AUTH.login(this.credentials.uname, this.credentials.password);

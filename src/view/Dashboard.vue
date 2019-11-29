@@ -33,41 +33,12 @@
         </v-list>
       </v-col>
       <v-col cols="8">
-        <v-card class="mx-auto" max-width="800">
+        <!-- Tinuod nga post ni diria -->
+        <div class="uploaded_post">
           <div>
-            <!-- Create Post -->
-            <v-card-title id="title">Create Post</v-card-title>
+            <Post/>
           </div>
-          <div>
-            <div id="text">
-              <v-textarea v-model="description" outlined name="input-7-4" label="Description..."></v-textarea>
-            </div>
-            <!-- <div class="btn btn-primary btn-sm float-left">
-              <span>Choose file</span>
-              <input type="file" />
-            </div>
-             -->
-            <v-card-actions>
-              <v-file-input
-                v-model="post.files"
-                color="deep-purple accent-4"
-                counter
-                placeholder="Add Photo"
-                prepend-icon="mdi-camera"
-                :show-size="1000"
-                accept="image/*"
-                id="fileinput"
-                v-on:change="handleFileUpload"
-                ref="myFiles"
-              ></v-file-input>
-
-              <v-spacer></v-spacer>
-
-              <!-- Post Button -->
-              <v-btn color="info" id="postbutton" @click="upload_post">Post</v-btn>
-            </v-card-actions>
-          </div>
-        </v-card>
+        </div>
 
         <!-- Posts -->
         <!-- <div v-for="(item, index) in this.createPost" :key="index"> -->
@@ -103,13 +74,12 @@
             <!-- Comment Dialog -->
           </v-card-actions>
         </v-card>
+
+        <!-- Comment Dialog here!! -->
         <v-dialog v-model="dialog" max-width="500px">
-          <!-- Comment Dialog here!! -->
-          <v-card>
-            <br />
-            <v-card-text>
-              <v-text-field outlined label="Comment here..."></v-text-field>
-            </v-card-text>
+          <v-card class="px-2">
+            <br>
+            <v-text-field outlined label="Comment here..."></v-text-field>
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn text color="secondary" @click="dialog = false">Comment</v-btn>
@@ -120,67 +90,6 @@
     </v-row>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      dialog: false,
-      description: "",
-      post: {
-        files: [],
-        rating: 0
-      },
-      items: [
-        { href: "/dashboard", title: "Home", icon: "dashboard" },
-        { href: "/myaccount", title: "My Account", icon: "account_circle" },
-        { href: "/login", title: "Logout", icon: "logout" }
-      ],
-      posts: [
-        {
-          id: 1,
-          files: "https://cdn.vuetifyjs.com/images/cards/mountain.jpg",
-          description:
-            "Visit ten places on our planet that are undergoing the biggest changes today.",
-          rating: 0
-        },
-        {
-          id: 2,
-          files: "https://cdn.vuetifyjs.com/images/cards/mountain.jpg",
-          description:
-            "Visit ten places on our planet that are undergoing the biggest changes today.",
-          rating: 0
-        }
-      ]
-    };
-  },
-  methods: {
-    handleFileUpload() {
-      try {
-        this.post.files[0] = this.$refs.myFiles.files;
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    upload_post() {
-      var upload = new FormData();
-      upload.append("files", this.post.files);
-      console.log(upload);
-      // this.post.id = this.posts.length;
-      // this.posts.push(this.post);
-      // axios
-      //   .post(url, upload)
-      //   .then(response => {})
-      //   .catch(err => {});
-    },
-    redirect(pathname) {
-      this.$router.push({ path: pathname });
-    },
-    changeColor() {
-      this.changeColor = "deep-orange";
-    }
-  }
-};
-</script>
 <style scoped>
 #image {
   float: center;
@@ -216,10 +125,62 @@ export default {
   margin-right: 3%;
   margin-top: 2%;
 }
-#postbutton {
-  margin-right: 2%;
+#postbtn {
+  float: right;
+  top: -20px;
 }
 #fileinput {
   margin-left: 2%;
 }
 </style>
+
+<script>
+import Post from "components/Post.vue";
+
+export default {
+  // name: "UploadPost",
+  components: {
+    Post
+  },
+  data() {
+    return {
+      dialog: false,
+      description: "",
+      post: {
+        files: [],
+        rating: 0
+      },
+      items: [
+        { href: "/dashboard", title: "Home", icon: "dashboard" },
+        { href: "/myaccount", title: "My Account", icon: "account_circle" },
+        { href: "/login", title: "Logout", icon: "logout" }
+      ],
+      posts: [
+        {
+          id: 1,
+          files: "https://cdn.vuetifyjs.com/images/cards/mountain.jpg",
+          description:
+            "Visit ten places on our planet that are undergoing the biggest changes today.",
+          rating: 0
+        },
+        {
+          id: 2,
+          files: "https://cdn.vuetifyjs.com/images/cards/mountain.jpg",
+          description:
+            "Visit ten places on our planet that are undergoing the biggest changes today.",
+          rating: 0
+        }
+      ]
+    };
+  },
+  methods: {
+    redirect(pathname) {
+      this.$router.push({ path: pathname });
+    },
+    changeColor() {
+      this.changeColor = "deep-orange";
+    }
+  }
+};
+</script>
+
