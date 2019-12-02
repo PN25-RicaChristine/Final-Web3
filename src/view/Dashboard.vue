@@ -5,12 +5,23 @@
         <v-list>
           <!-- sidebar -->
           <v-list-item>
-            <v-img
-              id="image"
-              src="https://randomuser.me/api/portraits/women/85.jpg"
-              height="200"
-              max-width="200"
-            ></v-img>
+            <v-container grid-list-xl id="image">
+              <image-input v-model="avatar">
+                <div slot="activator">
+                  <v-avatar size="150px" v-ripple v-if="!avatar" class="grey lighten-3 mb-3">
+                    <span>Click to add avatar</span>
+                  </v-avatar>
+                  <v-avatar size="150px" v-ripple v-else class="mb-3">
+                    <img :src="avatar.imageURL" alt="avatar">
+                  </v-avatar>
+                </div>
+              </image-input>
+              <v-slide-x-transition>
+                <div v-if="avatar && saved == false">
+                  <v-btn class="primary" @click="uploadImage" :loading="saving">Save Avatar</v-btn>
+                </div>
+              </v-slide-x-transition>
+            </v-container>
           </v-list-item>
           <v-list-item link two-line class="title">
             <v-list-item-content>
@@ -33,36 +44,12 @@
         </v-list>
       </v-col>
       <v-col cols="8">
-        <v-card class="mx-auto" max-width="800">
+        <!-- Tinuod nga post ni diria -->
+        <div class="uploaded_post">
           <div>
-            <!-- Create Post -->
-            <v-card-title id="title">Create Post</v-card-title>
+            <Post/>
           </div>
-          <div>
-            <div id="text">
-              <v-textarea v-model="description" outlined name="input-7-4" label="Description..."></v-textarea>
-            </div>
-            <v-card-actions>
-              <v-file-input
-                v-model="post.files"
-                color="deep-purple accent-4"
-                counter
-                placeholder="Add Photo"
-                prepend-icon="mdi-camera"
-                :show-size="1000"
-                accept="image/*"
-                id="fileinput"
-                v-on:change="handleFileUpload"
-                ref="myFiles"
-              ></v-file-input>
-
-              <v-spacer></v-spacer>
-
-              <!-- Post Button -->
-              <v-btn color="info" id="postbutton" @click="upload_post">Post</v-btn>
-            </v-card-actions>
-          </div>
-        </v-card>
+        </div>
 
         <!-- Posts -->
         <!-- <div v-for="(item, index) in this.createPost" :key="index"> -->
@@ -82,7 +69,7 @@
 
           <!-- Like actions -->
           <v-card-actions>
-            <v-btn text icon color="error">
+            <v-btn text icon @click="type='host'">
               <v-icon>mdi-thumb-up</v-icon>
             </v-btn>
 
@@ -98,13 +85,12 @@
             <!-- Comment Dialog -->
           </v-card-actions>
         </v-card>
+
+        <!-- Comment Dialog here!! -->
         <v-dialog v-model="dialog" max-width="500px">
-          <!-- Comment Dialog here!! -->
-          <v-card>
+          <v-card class="px-2">
             <br>
-            <v-card-text>
-              <v-text-field outlined label="Comment here..."></v-text-field>
-            </v-card-text>
+            <v-text-field outlined label="Comment here..."></v-text-field>
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn text color="secondary" @click="dialog = false">Comment</v-btn>
@@ -115,71 +101,13 @@
     </v-row>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      dialog: false,
-      description: "",
-      post: {
-        files: [],
-        rating: 0
-      },
-      items: [
-        { href: "/dashboard", title: "Home", icon: "dashboard" },
-        { href: "/myaccount", title: "My Account", icon: "account_circle" },
-        { href: "/login", title: "Logout", icon: "logout" }
-      ],
-      posts: [
-        {
-          id: 1,
-          files: "https://cdn.vuetifyjs.com/images/cards/mountain.jpg",
-          description:
-            "Visit ten places on our planet that are undergoing the biggest changes today.",
-          rating: 0
-        },
-        {
-          id: 2,
-          files: "https://cdn.vuetifyjs.com/images/cards/mountain.jpg",
-          description:
-            "Visit ten places on our planet that are undergoing the biggest changes today.",
-          rating: 0
-        }
-      ]
-    };
-  },
-  methods: {
-    handleFileUpload() {
-      try {
-        this.post.files[0] = this.$refs.myFiles.files;
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    upload_post() {
-      var upload = new FormData();
-      upload.append("files", this.post.files);
-      console.log(upload);
-      // this.post.id = this.posts.length;
-      // this.posts.push(this.post);
-      // axios
-      //   .post(url, upload)
-      //   .then(response => {})
-      //   .catch(err => {});
-    },
-    redirect(pathname) {
-      this.$router.push({ path: pathname });
-    },
-    changeColor(){
-      this.changeColor="deep-orange";
-    }
-  }
-};
-</script>
 <style scoped>
 #image {
-  float: center;
-  width: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 
 #sidebar {
@@ -211,10 +139,82 @@ export default {
   margin-right: 3%;
   margin-top: 2%;
 }
-#postbutton {
-  margin-right: 2%;
+#postbtn {
+  float: right;
+  top: -20px;
 }
 #fileinput {
   margin-left: 2%;
 }
 </style>
+
+<script>
+// import Post from "components/Post.vue";
+import ImageInput from "components/ImageInput.vue";
+
+export default {
+  // name: "UploadPost",
+  data() {
+    return {
+      avatar: null,
+      saving: false,
+      saved: false,
+      dialog: false,
+      description: "",
+      post: {
+        files: [],
+        rating: 0
+      },
+      items: [
+        { href: "/dashboard", title: "Home", icon: "dashboard" },
+        { href: "/myaccount", title: "My Account", icon: "account_circle" },
+        { href: "/login", title: "Logout", icon: "logout" }
+      ],
+      posts: [
+        {
+          id: 1,
+          files: "https://cdn.vuetifyjs.com/images/cards/mountain.jpg",
+          description:
+            "Visit ten places on our planet that are undergoing the biggest changes today.",
+          rating: 0
+        },
+        {
+          id: 2,
+          files: "https://cdn.vuetifyjs.com/images/cards/mountain.jpg",
+          description:
+            "Visit ten places on our planet that are undergoing the biggest changes today.",
+          rating: 0
+        }
+      ]
+    };
+  },
+  components: {
+    ImageInput: ImageInput
+  },
+  watch: {
+    avatar: {
+      handler: function() {
+        this.saved = false;
+      },
+      deep: true
+    }
+  },
+  methods: {
+    redirect(pathname) {
+      this.$router.push({ path: pathname });
+    },
+    changeColor() {
+      this.changeColor = "deep-orange";
+    },
+    uploadImage() {
+      this.saving = true;
+      setTimeout(() => this.savedAvatar(), 1000);
+    },
+    savedAvatar() {
+      this.saving = false;
+      this.saved = true;
+    }
+  }
+};
+</script>
+

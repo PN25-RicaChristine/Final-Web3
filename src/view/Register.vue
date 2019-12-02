@@ -24,13 +24,6 @@
               :prepend-icon="'mdi-account'"
             ></v-text-field>
             <v-text-field
-              v-model="credentials.adds"
-              :rules="[rules.required]"
-              label="Address"
-              required
-              :prepend-icon="'mdi-map-marker'"
-            ></v-text-field>
-            <v-text-field
               v-model="credentials.email"
               :rules="[rules.required]"
               label="E-mail"
@@ -75,6 +68,38 @@
     </div>
   </v-img>
 </template>
+<style scoped>
+#card {
+  float: center;
+  position: relative;
+  background: linear-gradient(to bottom, #cd853f 0%, #ffffff 100%);
+  border-radius: 25px;
+  border: solid black 1px;
+  bottom: 1px;
+}
+#title {
+  position: absolute;
+  text-align: center;
+  border-radius: 10px;
+  top: -95px;
+  left: 165px;
+  z-index: 2;
+}
+#circle {
+  background: black;
+}
+#form {
+  padding-top: 40px;
+  width: 450px;
+  margin-left: 20px;
+}
+</style>
+
+
+
+
+
+
 <script>
 import AUTH from "@/auth";
 // import jquery from "jquery";
@@ -86,7 +111,6 @@ export default {
       credentials: {
         name: "",
         uname: "",
-        adds: "",
         email: "",
         password: "",
         conpassword: "",
@@ -102,43 +126,56 @@ export default {
   },
   methods: {
     submit: function(e) {
-      let self = this;
-      e.preventDefault();
-      AUTH.register(
-        this.credentials.name,
-        this.credentials.uname,
-        this.credentials.adds,
-        this.credentials.email,
-        this.credentials.password,
-        this.credentials.conpassword,
-        this.credentials.type
-      );
-      //start db
-      this.axios
-        .post("http://localhost:3000/api/users/register", {
-          name: this.credentials.name,
-          username: this.credentials.uname,
-          email: this.credentials.email,
-          password: this.credentials.password,
-          confirmPassword: this.credentials.conpassword,
-          userType: this.credentials.type,
-          address: this.credentials.adds
-        })
-        .then(function(response) {
-          alert(response.data);
-          if (response.data == "You are now registered!") {
-            self.$router.push("/login");
-          }
-        });
+      e.preventDefault()
+      let data = {
+        name: this.credentials.name,
+        username: this.credentials.uname,
+        password: this.credentials.password,
+        email: this.credentials.email,
+        type: this.credentials.type,
+        conpassword: this.credentials.conpassword
+      }
+     
+      this.$store.dispatch('registerAsync', { data })
+        .then(() => this.$router.push('/login'))
+        .catch(err => console.log(err))
+      // let self = this;
+      // e.preventDefault();
+      // AUTH.register(
+      //   this.credentials.name,
+      //   this.credentials.uname,
+      //   this.credentials.adds,
+      //   this.credentials.email,
+      //   this.credentials.password,
+      //   this.credentials.conpassword,
+      //   this.credentials.type
+      // );
+      // //start db
+      // this.axios
+      //   .post("http://localhost:3000/api/users/register", {
+      //     name: this.credentials.name,
+      //     username: this.credentials.uname,
+      //     email: this.credentials.email,
+      //     password: this.credentials.password,
+      //     confirmPassword: this.credentials.conpassword,
+      //     userType: this.credentials.type,
+      //     address: this.credentials.adds
+      //   })
+      //   .then(function(response) {
+      //     alert(response.data);
+      //     if (response.data == "You are now registered!") {
+      //       self.$router.push("/login");
+      //     }
+      //   });
 
-      //end db
-      sessionStorage.setItem("Name", this.credentials.name),
-        sessionStorage.setItem("Username", this.credentials.uname),
-        sessionStorage.setItem("Address", this.credentials.adds),
-        sessionStorage.setItem("Email", this.credentials.email),
-        sessionStorage.setItem("Password", this.credentials.password),
-        sessionStorage.setItem("ConPassword", this.credentials.conpassword);
-      sessionStorage.setItem("userType", this.credentials.type);
+      // //end db
+      // sessionStorage.setItem("Name", this.credentials.name),
+      //   sessionStorage.setItem("Username", this.credentials.uname),
+      //   sessionStorage.setItem("Address", this.credentials.adds),
+      //   sessionStorage.setItem("Email", this.credentials.email),
+      //   sessionStorage.setItem("Password", this.credentials.password),
+      //   sessionStorage.setItem("ConPassword", this.credentials.conpassword);
+      // sessionStorage.setItem("userType", this.credentials.type);
     },
     redirect(router) {
       this.$router.push(router);
@@ -147,28 +184,3 @@ export default {
 };
 </script>
 
-<style scoped>
-#card {
-  float: center;
-  position: relative;
-  background: linear-gradient(to bottom, #cd853f 0%, #ffffff 100%);
-  border-radius: 5%;
-  border: double black 1px;
-}
-#title {
-  position: absolute;
-  text-align: center;
-  border-radius: 10%;
-  top: -13%;
-  left: 35%;
-  z-index: 2;
-}
-#circle {
-  background: black;
-}
-#form {
-  padding-top: 7%;
-  width: 450px;
-  margin-left: 20px;
-}
-</style>

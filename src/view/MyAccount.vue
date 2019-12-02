@@ -4,8 +4,8 @@
       <v-row justify="space-between">
         <v-col cols="auto">
           <v-img
-            height="900"
-            width="1000"
+            height="500"
+            width="500"
             src="https://cdn.vuetifyjs.com/images/cards/store.jpg"
           ></v-img>
         </v-col>
@@ -41,3 +41,6 @@
     </v-container>
   </v-card>
 </template>
+<style scoped>
+
+</style>

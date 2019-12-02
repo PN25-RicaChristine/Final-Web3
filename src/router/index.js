@@ -5,34 +5,60 @@ import Signup from "@/view/Register";
 import Login from "@/view/Login";
 import Dashboard from "@/view/Dashboard";
 import Home from "@/view/Home";
+import MyAccount from "@/view/MyAccount"
+import store from '../store'
 
 Vue.use(VueRouter);
+
+const auth = (to, from, next) => {
+  if (store.getters.isLoggedIn) {
+    next()
+  } else {
+    next('/login')
+  }
+}
+
 
 const routes = [
   {
     path: "/register",
     name: "signup",
-    component: Signup
+    component: Signup,
   },
   {
     path: "/login",
     name: "login",
-    component: Login
+    component: Login,
   },
   {
     path: "/dashboard",
     name: "dashboard",
-    component: Dashboard
+    component: Dashboard,
+    // beforeEnter: auth
   },
   {
     path: "/bloggerdashboard",
     name: "bdashboard",
-    component: Dashboard
+    component: Dashboard,
+    beforeEnter: auth
   },
   {
-    path:"/",
-    name:"home",
-    component: Home
+    path: "/",
+    name: "home",
+    component: Home,
+
+  },
+  {
+    path: "/home",
+    name: "home",
+    component: Home,
+
+  },
+  {
+    path: "/myaccount",
+    name: "myaccount",
+    component: MyAccount,
+    beforeEnter: auth
   },
 ]
 
